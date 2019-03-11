@@ -11,3 +11,23 @@ body {
 .navbar-default {
   color: #c6deff
 }
+
+/* https://github.com/tidyverse/tidytemplate/blob/27af8fd35dbba81d83e8b4a7e8677b8821fb8cc3/inst/pkgdown/assets/tidyverse-2.css#L15*/
+/* navbar ----------------------------------------------- */
+
+.navbar .info {
+  float: left;
+  height: 50px;
+  width: 140px;
+  font-size: 80%;
+  position: relative;
+  margin-left: 5px;
+}
+.navbar .info .partof {
+  position: absolute;
+  top: 0;
+}
+.navbar .info .version {
+  position: absolute;
+  bottom: 0;
+}
