@@ -2,3 +2,12 @@ body {
   color: #333E50;
   font-size: 18px;
 }
+
+
+.navbar {
+  background-color: #6faef5;
+}
+
+.navbar-default {
+  color: #c6deff
+}
