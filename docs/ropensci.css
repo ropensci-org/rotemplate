@@ -4,6 +4,9 @@ body {
   font-size: 18px;
 }
 
+.h1, .h2, .h3, h1, h2, h3{
+  color: #5c677e;
+}
 
 .navbar {
   background-color: #6faef5;
@@ -21,6 +24,9 @@ footer {
   color: #c6deff;
 }
 
+.navbar-brand{
+  font-size: 40px;
+}
 
 .navbar .navbar-brand:hover {
   color: #fff;
@@ -46,6 +52,10 @@ footer {
   color: #fff;
 }
 
+.navbar .info .partof > a::before{
+  content: " ";
+}
+
 .navbar .info .version {
   position: absolute;
   bottom: 0;
@@ -64,7 +74,13 @@ footer {
 .navbar-default .navbar-nav > li > a:hover{
   color: #fff;
 }
-/* sidebar */
+/* reference navbar ----------------------------------------------- */
+.nav-pills > li.active > a, .nav-pills > li.active > a:focus, .nav-pills > li.active > a:hover{
+  color: #fff;
+  background-color: #6faef5;
+}
+
+/* sidebar ----------------------------------------------- */
 
 #sidebar h2{
   color: #5c677e;
