@@ -10,15 +10,15 @@ body {
 }
 
 /* footer ----------------------------------------------- */
-footer {
-  background-color: #6faef5;
-}
-
 
 /* https://github.com/tidyverse/tidytemplate/blob/27af8fd35dbba81d83e8b4a7e8677b8821fb8cc3/inst/pkgdown/assets/tidyverse-2.css#L15*/
 /* navbar ----------------------------------------------- */
 .navbar {
   background-color: #6faef5;
+}
+
+.navbar-default .navbar-toggle {
+  color: #c6deff;
 }
 
 .navbar .navbar-brand {
@@ -90,7 +90,8 @@ footer {
   content: "🚦️ ";
 }
 
-/* /* reference navbar ----------------------------------------------- */av-pills > li.active > a, .nav-pills > li.active > a:focus, .nav-pills > li.active > a:hover{
+/* reference navbar ----------------------------------------------- */
+.nav-pills > li.active > a, .nav-pills > li.active > a:focus, .nav-pills > li.active > a:hover {
   color: #fff;
   background-color: #6faef5;
 }
