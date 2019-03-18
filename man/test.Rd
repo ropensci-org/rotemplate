@@ -9,3 +9,6 @@ test()
 \description{
 Test function
 }
+\examples{
+lala <- 1
+}

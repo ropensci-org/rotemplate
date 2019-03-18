@@ -5,6 +5,12 @@ body {
   font-size: 18px;
 }
 
+usage, examples {
+    background-color: #f8f8f8;
+    color: #333;
+    font-size: 18px;
+}
+
 .h1, .h2, .h3, h1, h2, h3{
   color: #5c677e;
 }
