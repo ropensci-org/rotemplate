@@ -1,3 +1,4 @@
+
 body {
   color: #333E50;
   font-size: 18px;
@@ -8,12 +9,22 @@ body {
   background-color: #6faef5;
 }
 
-.navbar-default {
-  color: #c6deff
+footer {
+  background-color: #6faef5;
 }
+
 
 /* https://github.com/tidyverse/tidytemplate/blob/27af8fd35dbba81d83e8b4a7e8677b8821fb8cc3/inst/pkgdown/assets/tidyverse-2.css#L15*/
 /* navbar ----------------------------------------------- */
+
+.navbar .navbar-brand {
+  color: #c6deff;
+}
+
+
+.navbar .navbar-brand:hover {
+  color: #fff;
+}
 
 .navbar .info {
   float: left;
@@ -23,11 +34,55 @@ body {
   position: relative;
   margin-left: 5px;
 }
+
 .navbar .info .partof {
   position: absolute;
   top: 0;
+  color: #c6deff;
 }
+
+.navbar .info .partof > a{
+  position: absolute;
+  color: #fff;
+}
+
 .navbar .info .version {
   position: absolute;
   bottom: 0;
+  color: #c6deff;
+}
+
+.navbar-default .navbar-nav > li > a{
+  color: #c6deff;
+}
+
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:focus, .navbar-default .navbar-nav > .active > a:hover{
+  background-color: #dfe3eb;
+  color: #5c677e;
+}
+
+.navbar-default .navbar-nav > li > a:hover{
+  color: #fff;
+}
+/* sidebar */
+
+#sidebar h2{
+  color: #5c677e;
+}
+
+#sidebar .links h2::before{
+  content: "🔗 ";
+}
+
+
+#sidebar .developers h2::before{
+  content: "🏭 ";
+}
+
+#sidebar .license h2::before{
+  content: "©️ ";
+}
+
+#sidebar .dev-status h2::before{
+  content: "🚦️ ";
 }

@@ -15,4 +15,5 @@ Status](https://travis-ci.com/ropenscilabs/rotemplate.svg?branch=master)](https:
 rotemplate provides a custom pkgdown template for rOpenSci packages.
 Please don’t use it for your own package.
 
-Inspired by [tidytemplate](https://github.com/tidyverse/tidytemplate/).
+Inspired by [tidytemplate](https://github.com/tidyverse/tidytemplate/)
+and [lockedatapkg](https://github.com/lockedatapublished/lockedatapkg).
