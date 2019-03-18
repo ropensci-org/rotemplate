@@ -2,13 +2,6 @@
 
 body {
   color: #333E50;
-  font-size: 18px;
-}
-
-usage, examples {
-    background-color: #f8f8f8;
-    color: #333;
-    font-size: 18px;
 }
 
 .h1, .h2, .h3, h1, h2, h3{
@@ -100,4 +93,12 @@ usage, examples {
 .nav-pills > li.active > a, .nav-pills > li.active > a:focus, .nav-pills > li.active > a:hover {
   color: #fff;
   background-color: #6faef5;
+}
+
+#sidebar .nav > li {
+  padding: 10px 0 0px 20px;
+  display: list-item;
+  background-repeat: no-repeat;
+  background-size: 16px 280px;
+  background-position: left 0px;
 }
