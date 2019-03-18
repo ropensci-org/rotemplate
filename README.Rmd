@@ -26,3 +26,5 @@ Inspired by [tidytemplate](https://github.com/tidyverse/tidytemplate/) and [lock
 ## Examples "in the wild"
 
 * [`riem`](https://ropensci.github.io/riem/)
+
+* [`ropenaq`](https://ropensci.github.io/ropenaq/)

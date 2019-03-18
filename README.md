@@ -22,3 +22,5 @@ and [lockedatapkg](https://github.com/lockedatapublished/lockedatapkg).
 ## Examples “in the wild”
 
   - [`riem`](https://ropensci.github.io/riem/)
+
+  - [`ropenaq`](https://ropensci.github.io/ropenaq/)
