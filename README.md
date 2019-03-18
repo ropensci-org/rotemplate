@@ -13,7 +13,12 @@ Status](https://travis-ci.com/ropenscilabs/rotemplate.svg?branch=master)](https:
 <!-- badges: end -->
 
 rotemplate provides a custom pkgdown template for rOpenSci packages.
-Please don’t use it for your own package.
+Please don’t use it for your own package if it’s not an rOpenSci package
+(i.e. listed on <https://ropensci.org/packages/>).
 
 Inspired by [tidytemplate](https://github.com/tidyverse/tidytemplate/)
 and [lockedatapkg](https://github.com/lockedatapublished/lockedatapkg).
+
+## Examples “in the wild”
+
+  - [`riem`](https://ropensci.github.io/riem/)
