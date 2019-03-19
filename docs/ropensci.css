@@ -4,9 +4,15 @@ body {
   color: #333E50;
 }
 
-li {
-
+a {
+  color: #6faef5;
 }
+
+a:focus, a:hover {
+  color: #6faef5;
+  text-decoration: underline;
+}
+
 
 .h1, .h2, .h3, h1, h2, h3{
   color: #5c677e;
