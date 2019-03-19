@@ -14,6 +14,7 @@ a:focus, a:hover {
 }
 
 
+
 .h1, .h2, .h3, h1, h2, h3{
   color: #5c677e;
 }
@@ -26,12 +27,14 @@ a:focus, a:hover {
   background-color: #6faef5;
 }
 
-.navbar-default .navbar-toggle {
-  color: #c6deff;
-}
 
 .navbar .navbar-brand {
   color: #c6deff;
+}
+
+
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #c6deff;
 }
 
 .navbar-brand{
