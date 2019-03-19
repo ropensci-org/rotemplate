@@ -4,6 +4,10 @@ body {
   color: #333E50;
 }
 
+li {
+
+}
+
 .h1, .h2, .h3, h1, h2, h3{
   color: #5c677e;
 }
@@ -95,10 +99,13 @@ body {
   background-color: #6faef5;
 }
 
+
 #sidebar .nav > li {
   padding: 10px 0 0px 20px;
   display: list-item;
   background-repeat: no-repeat;
   background-size: 16px 280px;
   background-position: left 0px;
+  padding-block-start: 0px;
 }
+
