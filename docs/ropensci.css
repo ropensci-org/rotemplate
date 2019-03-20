@@ -19,6 +19,7 @@ a:focus, a:hover {
   color: #5c677e;
 }
 
+
 .btn-primary {
 
     color: #c6deff;
@@ -46,6 +47,13 @@ a:focus, a:hover {
 }
 
 
+.version.label.label-default.version-default {
+   background-color: #dfe3eb;
+    color: #5c677e;
+    margin-bottom: 3px;
+    font-size: 100%;
+}
+
 .navbar-default .navbar-toggle .icon-bar {
     background-color: #c6deff;
 }
@@ -62,7 +70,7 @@ a:focus, a:hover {
   float: left;
   height: 50px;
   width: 140px;
-  font-size: 80%;
+  font-size: 100%;
   position: relative;
   margin-left: 5px;
 }
