@@ -1,7 +1,8 @@
 pandoc: 2.3.1
 pkgdown: 1.3.0.9000
 pkgdown_sha: 0b2c27d41b869ac31b6a46815940f55b12f6171f
-articles: []
+articles:
+  test: test.html
 urls:
   reference: https://ropenscilabs.github.io/rotemplate/reference
   article: https://ropenscilabs.github.io/rotemplate/articles

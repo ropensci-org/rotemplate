@@ -4,3 +4,6 @@ template:
   package: rotemplate
 
 destination: docs
+
+toc:
+  depth: 3

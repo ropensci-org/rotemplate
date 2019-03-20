@@ -110,11 +110,8 @@ a:focus, a:hover {
 
 
 #sidebar .nav > li {
-  padding: 10px 0 0px 20px;
+  padding: 0px 0 0px 20px;
   display: list-item;
-  background-repeat: no-repeat;
-  background-size: 16px 280px;
-  background-position: left 0px;
-  padding-block-start: 0px;
+  line-height: 20px;
 }
 
