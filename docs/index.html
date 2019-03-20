@@ -95,8 +95,46 @@
 </h1></div>
 <!-- badges: start -->
 
-<p>rotemplate provides a custom pkgdown template for rOpenSci packages. Please don’t use it for your own package if it’s not an rOpenSci package (i.e. listed on <a href="https://ropensci.org/packages/" class="uri">https://ropensci.org/packages/</a>).</p>
+<p>rotemplate provides a custom pkgdown template for rOpenSci packages. Please don’t use it for your own package if it’s not an rOpenSci package (i.e. only use it for packages listed on <a href="https://ropensci.org/packages/" class="uri">https://ropensci.org/packages/</a>).</p>
 <p>Inspired by <a href="https://github.com/tidyverse/tidytemplate/">tidytemplate</a> and <a href="https://github.com/lockedatapublished/lockedatapkg">lockedatapkg</a>.</p>
+<div id="how-to-use" class="section level2">
+<h2 class="hasAnchor">
+<a href="#how-to-use" class="anchor"></a>How to use</h2>
+<div id="if-your-website-has-no-pkgdown-website-yet" class="section level3">
+<h3 class="hasAnchor">
+<a href="#if-your-website-has-no-pkgdown-website-yet" class="anchor"></a>If your website has no <code>pkgdown</code> website yet</h3>
+<p>Run</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1">usethis<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/usethis/topics/use_pkgdown">use_pkgdown</a></span>()</a></code></pre></div>
+<p>And to ensure your website will be automatically deployed from Travis, which we recommend,</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">usethis<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/usethis/topics/use_pkgdown">use_pkgdown_travis</a></span>()</a></code></pre></div>
+</div>
+<div id="in-all-cases" class="section level3">
+<h3 class="hasAnchor">
+<a href="#in-all-cases" class="anchor"></a>In all cases</h3>
+<div id="tweak-the-pkgdown-config" class="section level4">
+<h4 class="hasAnchor">
+<a href="#tweak-the-pkgdown-config" class="anchor"></a>Tweak the <code>pkgdown</code> config</h4>
+<p>In your <code>pkgdown</code> config file make sure to add the following lines</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="fu">template:</span></a>
+<a class="sourceLine" id="cb3-2" data-line-number="2">  <span class="fu">package:</span><span class="at"> rotemplate</span></a></code></pre></div>
+</div>
+<div id="tweak-the-travis-config" class="section level4">
+<h4 class="hasAnchor">
+<a href="#tweak-the-travis-config" class="anchor"></a>Tweak the Travis config</h4>
+<p>To <code>.travis.yml</code> also add a command installing the package template, i.e. something like <code><a href="https://www.rdocumentation.org/packages/remotes/topics/install_cran">remotes::install_cran("pkgdown");remotes::install_github("ropenscilabs/rotemplate")</a></code>.</p>
+<p>Locally, if you want to build and preview the website, you’ll also need to run <code><a href="https://www.rdocumentation.org/packages/remotes/topics/install_github">remotes::install_github("ropenscilabs/rotemplate")</a></code>.</p>
+</div>
+<div id="make-sure-the-website-has-a-favicon" class="section level4">
+<h4 class="hasAnchor">
+<a href="#make-sure-the-website-has-a-favicon" class="anchor"></a>Make sure the website has a favicon</h4>
+<p>If your package has no logo of its own, use the rOpenSci hex by running the code below, but do not necessarily put it in the README as mentioned by <code>usethis</code> (your choice). This way the package website will have a favicon.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">usethis<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/usethis/topics/use_logo">use_logo</a></span>(<span class="st">"https://raw.githubusercontent.com/ropensci/logos/master/stickers/blue_short_hexsticker.png"</span>)</a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="co"># but do not necessarily put it in the README as mentioned by `usethis`,</span></a>
+<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="co"># your call!</span></a>
+<a class="sourceLine" id="cb4-4" data-line-number="4">pkgdown<span class="op">::</span><span class="kw"><a href="https://pkgdown.r-lib.org/reference/build_favicon.html">build_favicon</a></span>()</a></code></pre></div>
+</div>
+</div>
+</div>
 <div id="examples-in-the-wild" class="section level2">
 <h2 class="hasAnchor">
 <a href="#examples-in-the-wild" class="anchor"></a>Examples “in the wild”</h2>

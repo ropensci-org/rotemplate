@@ -14,10 +14,62 @@ Status](https://travis-ci.com/ropenscilabs/rotemplate.svg?branch=master)](https:
 
 rotemplate provides a custom pkgdown template for rOpenSci packages.
 Please don’t use it for your own package if it’s not an rOpenSci package
-(i.e. listed on <https://ropensci.org/packages/>).
+(i.e. only use it for packages listed on
+<https://ropensci.org/packages/>).
 
 Inspired by [tidytemplate](https://github.com/tidyverse/tidytemplate/)
 and [lockedatapkg](https://github.com/lockedatapublished/lockedatapkg).
+
+## How to use
+
+### If your website has no `pkgdown` website yet
+
+Run
+
+``` r
+usethis::use_pkgdown()
+```
+
+And to ensure your website will be automatically deployed from Travis,
+which we recommend,
+
+``` r
+usethis::use_pkgdown_travis()
+```
+
+### In all cases
+
+#### Tweak the `pkgdown` config
+
+In your `pkgdown` config file make sure to add the following lines
+
+``` yaml
+template:
+  package: rotemplate
+```
+
+#### Tweak the Travis config
+
+To `.travis.yml` also add a command installing the package template,
+i.e. something like
+`remotes::install_cran("pkgdown");remotes::install_github("ropenscilabs/rotemplate")`.
+
+Locally, if you want to build and preview the website, you’ll also need
+to run `remotes::install_github("ropenscilabs/rotemplate")`.
+
+#### Make sure the website has a favicon
+
+If your package has no logo of its own, use the rOpenSci hex by running
+the code below, but do not necessarily put it in the README as mentioned
+by `usethis` (your choice). This way the package website will have a
+favicon.
+
+``` r
+usethis::use_logo("https://raw.githubusercontent.com/ropensci/logos/master/stickers/blue_short_hexsticker.png")
+# but do not necessarily put it in the README as mentioned by `usethis`,
+# your call!
+pkgdown::build_favicon()
+```
 
 ## Examples “in the wild”
 
