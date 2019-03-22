@@ -1,0 +1,7 @@
+bibentry(
+    title = "rotemplate: 'pkgdown' Templates for rOpenSci Packages",
+    author = "Maëlle Salmon",
+    note = "R package version 0.0.0.9000",
+    bibtype = "Manual",
+    url = "https://github.com/ropenscilabs/rotemplate",
+  )
