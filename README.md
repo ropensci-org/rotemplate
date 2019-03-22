@@ -79,4 +79,6 @@ pkgdown::build_favicon()
 
   - [`ropenaq`](https://ropensci.github.io/ropenaq/)
 
+  - [`rotl`](https://ropensci.github.io/rotl/)
+
   - [`stplanr`](https://ropensci.github.io/stplanr/)
