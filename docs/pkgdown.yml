@@ -4,6 +4,6 @@ pkgdown_sha: 0b2c27d41b869ac31b6a46815940f55b12f6171f
 articles:
   test: test.html
 urls:
-  reference: https://ropenscilabs.github.io/rotemplate/reference
-  article: https://ropenscilabs.github.io/rotemplate/articles
+  reference: https://ropensci.github.io/rotemplate/reference
+  article: https://ropensci.github.io/rotemplate/articles
 
