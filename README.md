@@ -8,8 +8,8 @@
 [![Project Status: WIP – Initial development is in progress, but there
 has not yet been a stable, usable release suitable for the
 public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
-[![Travis build
-Status](https://travis-ci.com/ropenscilabs/rotemplate.svg?branch=master)](https://travis-ci.com/ropenscilabs/rotemplate)
+[![Build
+Status](https://travis-ci.org/ropensci/rotemplate.svg?branch=master)](https://travis-ci.org/ropensci/rotemplate)
 <!-- badges: end -->
 
 rotemplate provides a custom pkgdown template for rOpenSci packages.
