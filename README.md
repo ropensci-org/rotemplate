@@ -73,6 +73,8 @@ pkgdown::build_favicon()
 
 ## Examples “in the wild”
 
+  - [`cyphr`](https://ropensci.github.io/cyphr/)
+
   - [`drake`](https://ropensci.github.io/drake/)
 
   - [`riem`](https://ropensci.github.io/riem/)
