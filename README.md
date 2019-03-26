@@ -20,7 +20,7 @@ Please don’t use it for your own package if it’s not an rOpenSci package
 Inspired by [tidytemplate](https://github.com/tidyverse/tidytemplate/)
 and [lockedatapkg](https://github.com/lockedatapublished/lockedatapkg).
 
-## How to use
+## How to use `rotemplate`
 
 ### If your website has no `pkgdown` website yet
 
@@ -36,6 +36,31 @@ which we recommend,
 ``` r
 usethis::use_pkgdown_travis()
 ```
+
+Note that the setup that’ll be recommended by running the function above
+consists in updating the website on a gh-pages branch with every push,
+which might bloat your git history. If you want to avoid that, have a
+look at
+
+  - the [setup in `magick`
+    repo](https://github.com/ropensci/magick/blob/e8895c35df8a985212cc5b094a2aaad7389d029d/.travis.yml#L14):
+    the website is only built when there’s a GitHub release.
+
+<!-- end list -->
+
+``` yaml
+deploy:
+  provider: script
+  script: Rscript -e 'pkgdown::deploy_site_github()'
+  skip_cleanup: true
+  on:
+    tags: true
+```
+
+  - The [Travis-free, Makefile-based setup in `cyphr`
+    repo](https://github.com/ropensci/cyphr). The gh-pages branch is
+    created anew each time the website is updated. The website is built
+    locally.
 
 ### In all cases
 
