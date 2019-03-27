@@ -44,7 +44,8 @@ look at
 
   - the [setup in `magick`
     repo](https://github.com/ropensci/magick/blob/e8895c35df8a985212cc5b094a2aaad7389d029d/.travis.yml#L14):
-    the website is only built when there’s a GitHub release.
+    the website is only built when there’s a GitHub release, which uses
+    the following code in its `.travis.yml` file.
 
 <!-- end list -->
 
@@ -64,23 +65,32 @@ deploy:
 
 ### In all cases
 
-#### Tweak the `pkgdown` config
+#### Tweak `_pkgdown.yml` config
 
-In your `pkgdown` config file make sure to add the following lines
+In your `_pkgdown.yml` config file make sure to add the following lines
 
 ``` yaml
 template:
   package: rotemplate
 ```
 
-#### Tweak the Travis config
+#### Tweak the `.travis.yml` config
 
-To `.travis.yml` also add a command installing the package template,
+To `.travis.yml` add a command installing the package template,
 i.e. something like
-`remotes::install_cran("pkgdown");remotes::install_github("ropenscilabs/rotemplate")`.
 
-Locally, if you want to build and preview the website, you’ll also need
-to run `remotes::install_github("ropenscilabs/rotemplate")`.
+``` yaml
+before_cache: 
+  Rscript -e 'remotes::install_cran("pkgdown");remotes::install_github("ropenscilabs/rotemplate").'
+```
+
+Locally, if you want to build and preview the website, you’ll need to
+ensure that `rotemplate` is installed, and then build your website:
+
+``` r
+remotes::install_github("ropenscilabs/rotemplate")
+pkgdown::build_site()
+```
 
 #### Make sure the website has a favicon
 
@@ -109,3 +119,5 @@ pkgdown::build_favicon()
   - [`rotl`](https://ropensci.github.io/rotl/)
 
   - [`stplanr`](https://ropensci.github.io/stplanr/)
+
+  - [`visdat`](http://visdat.njtierney.com/)
