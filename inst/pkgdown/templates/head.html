@@ -15,6 +15,15 @@
 {{/has_favicons}}
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+{{#yaml}}{{#docsearch}}
+<!-- docsearch -->
+<script src="{{#site}}{{root}}{{/site}}docsearch.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.1/docsearch.min.css" integrity="sha256-QOSRU/ra9ActyXkIBbiIB144aDBdtvXBcNc3OTNuX/Q=" crossorigin="anonymous" />
+<link href="{{#site}}{{root}}{{/site}}docsearch.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+{{/docsearch}}{{/yaml}}
+
 <!-- Bootstrap -->
 {{#yaml}}
 {{#bootswatch}}<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/{{.}}/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />{{/bootswatch}}
@@ -39,13 +48,7 @@
 <link href="{{#site}}{{root}}{{/site}}pkgdown.css" rel="stylesheet">
 <script src="{{#site}}{{root}}{{/site}}pkgdown.js"></script>
 
-{{#yaml}}{{#docsearch}}
-<!-- docsearch -->
-<script src="{{#site}}{{root}}{{/site}}docsearch.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.1/docsearch.min.css" integrity="sha256-QOSRU/ra9ActyXkIBbiIB144aDBdtvXBcNc3OTNuX/Q=" crossorigin="anonymous" />
-<link href="{{#site}}{{root}}{{/site}}docsearch.css" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
-{{/docsearch}}{{/yaml}}
+
 
 <meta property="og:title" content="{{{pagetitle}}}" />
 {{#opengraph}}
