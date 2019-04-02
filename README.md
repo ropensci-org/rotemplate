@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# rotemplate <a href='https://ropenscilabs.github.io/rotemplate'><img src='man/figures/logo.png' align="right" height="134.5" /></a>
+# rotemplate <a href='https://ropensci.github.io/rotemplate'><img src='man/figures/logo.png' align="right" height="134.5" /></a>
 
 <!-- badges: start -->
 
@@ -81,14 +81,14 @@ i.e. something like
 
 ``` yaml
 before_cache: 
-  Rscript -e 'remotes::install_cran("pkgdown");remotes::install_github("ropenscilabs/rotemplate").'
+  Rscript -e 'remotes::install_cran("pkgdown");remotes::install_github("ropensci/rotemplate").'
 ```
 
 Locally, if you want to build and preview the website, you’ll need to
 ensure that `rotemplate` is installed, and then build your website:
 
 ``` r
-remotes::install_github("ropenscilabs/rotemplate")
+remotes::install_github("ropensci/rotemplate")
 pkgdown::build_site()
 ```
 
