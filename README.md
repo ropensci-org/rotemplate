@@ -24,10 +24,12 @@ and [lockedatapkg](https://github.com/lockedatapublished/lockedatapkg).
 
 ### If your website has no `pkgdown` website yet
 
-Run
+Run the code below to create a `pkgdown` config file that already uses
+the `rotemplate` package.
 
 ``` r
-usethis::use_pkgdown()
+# remotes::install_github("ropenscilabs/rodev")
+rodev::use_ro_pkgdown()
 ```
 
 And to ensure your website will be automatically deployed from Travis,
@@ -95,16 +97,15 @@ pkgdown::build_site()
 #### Make sure the website has a favicon
 
 If your package has no logo of its own, use the rOpenSci hex by running
-the code below, but do not necessarily put it in the README as mentioned
-by `usethis` (your choice). This way the package website will have a
-favicon.
+the code below, that will create a pkgdown/ folder with favicon files.
 
 ``` r
-usethis::use_logo("https://raw.githubusercontent.com/ropensci/logos/master/stickers/blue_short_hexsticker.png")
-# but do not necessarily put it in the README as mentioned by `usethis`,
-# your call!
-pkgdown::build_favicon()
+# remotes::install_github("ropenscilabs/rodev")
+rodev::use_ro_favicon()
 ```
+
+If your package has a logo, run `usethis::use_logo()` with the path to
+it, and then `pkgdown::build_favicon()`.
 
 ## Examples “in the wild”
 
