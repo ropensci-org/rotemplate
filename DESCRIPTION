@@ -6,10 +6,14 @@ Authors@R:
              family = "Salmon",
              role = c("cre", "aut"),
              email = "maelle.salmon@yahoo.se",
-             comment = structure("0000-0002-2815-0399", .Names = "ORCID")),
+             comment = c(ORCID = "0000-0002-2815-0399")),
       person(given = "rOpenSci",
              role = "fnd",
-             comment = "https://ropensci.org/"))
+             comment = "https://ropensci.org/"),
+      person(given = "Jeroen",
+             family = "Ooms",
+             role = "aut",
+             email = "jeroen@berkeley.edu"))
 Description: This is a private template for use by rOpenSci packages.
     Please don't use for your own code.
 License: MIT + file LICENSE
