@@ -121,11 +121,14 @@ a:focus, a:hover {
   background-color: #6faef5;
 }
 
-
 #sidebar .nav > li {
   padding: 0 0 0 20px;
   display: list-item;
   line-height: 15px;
+}
+
+#sidebar .nav > li > a {
+  padding: 5px 15px;
 }
 
 #hexlogo {
