@@ -15,7 +15,7 @@ Authors@R:
              role = "aut",
              email = "jeroen@berkeley.edu"))
 Description: This is a private template for use by rOpenSci packages.
-    Please don't use for your own code.
+    Please don't use it for your own non-rOpenSci package.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
