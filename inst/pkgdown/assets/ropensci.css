@@ -50,7 +50,7 @@ a:focus, a:hover {
 
 .navbar .navbar-brand {
   color: #c6deff;
-  font-size: 36px;
+  font-size: 24px;
   line-height: 26px;
 }
 
@@ -143,7 +143,6 @@ a:focus, a:hover {
     height: 40px;
   }
   .navbar .navbar-brand {
-    font-size: 25px;
-    line-height: 20px;
+    line-height: 19px;
   }
 }
