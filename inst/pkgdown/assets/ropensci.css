@@ -42,6 +42,8 @@ a:focus, a:hover {
   min-height: 40px;
 }
 
+.co {color: #474747;} /* comment */
+
 .navbar a {
   font-size: 14px;
   padding-bottom: 10px !important;
