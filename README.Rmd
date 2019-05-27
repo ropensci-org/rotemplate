@@ -19,93 +19,38 @@ knitr::opts_chunk$set(
 [![Build Status](https://travis-ci.org/ropensci/rotemplate.svg?branch=master)](https://travis-ci.org/ropensci/rotemplate)
 <!-- badges: end -->
 
-rotemplate provides a custom pkgdown template for rOpenSci packages. Please don’t use it for your own package if it's not an rOpenSci package (i.e. only use it for packages listed on https://ropensci.org/packages/).
+rotemplate provides a custom pkgdown template for rOpenSci packages. We use this to render sites at `https://docs.ropensci.org`. Please don’t use it for your own package if it's not an rOpenSci package (i.e. only use it for packages listed on https://ropensci.org/packages/).
 
 Inspired by [tidytemplate](https://github.com/tidyverse/tidytemplate/) and [lockedatapkg](https://github.com/lockedatapublished/lockedatapkg).
 
 ## How to use `rotemplate`
 
-### If your website has no `pkgdown` website yet
-
-Run the code below to create a `pkgdown` config file that already uses the `rotemplate` package.
+Documentation rOpenSci packages will automatically be generated from your master branch and published to https://docs.ropensci.org. You don't have to do anything to make this work. If you want to test your site locally use this:
 
 ```r
-# remotes::install_github("ropenscilabs/rodev")
-rodev::use_ro_pkgdown()
+template <- list(package = "rotemplate")
+pkgdown::build_site(devel = FALSE, override = list(template = template))
 ```
 
-And to ensure your website will be automatically deployed from Travis, which we recommend,
+Everything else can be configured as usual via the `_pkgdown.yml` file as described in the pkgdown documentation.
 
-```r
-usethis::use_pkgdown_travis()
-```
+If your website is not deploying or you run into another problem, please open an issue in the [ropensci/docs](https://github.com/ropensci/docs) repository.
 
-Note that the setup that'll be recommended by running the function above consists in updating the website on a gh-pages branch with every push, which 
-might bloat your git history. If you want to avoid that, have a look at
+## Example sites
 
-* the [setup in `magick` repo](https://github.com/ropensci/magick/blob/e8895c35df8a985212cc5b094a2aaad7389d029d/.travis.yml#L14): the website is only built when there's a GitHub release, which uses the following code in its `.travis.yml` file.
+* [`cyphr`](https://docs.ropensci.org/cyphr/)
 
-```yaml
-deploy:
-  provider: script
-  script: Rscript -e 'pkgdown::deploy_site_github()'
-  skip_cleanup: true
-  on:
-    tags: true
-```
+* [`drake`](https://docs.ropensci.org/drake/)
 
-* The [Travis-free, Makefile-based setup in `cyphr` repo](https://github.com/ropensci/cyphr). The gh-pages branch is created anew each time the website is updated. The website is built locally.
+* [`riem`](https://docs.ropensci.org/riem/)
 
-### In all cases
+* [`ropenaq`](https://docs.ropensci.org/ropenaq/)
 
-#### Tweak `_pkgdown.yml` config
+* [`rotl`](https://docs.ropensci.org/rotl/)
 
-In your `_pkgdown.yml` config file make sure to add the following lines
-
-```yaml
-template:
-  package: rotemplate
-```
-
-#### Tweak the `.travis.yml` config
-
-To `.travis.yml` add a command installing the package template, i.e. something like
-
-```yaml
-before_cache: 
-  Rscript -e 'remotes::install_cran("pkgdown");remotes::install_github("ropensci/rotemplate").'
-```
-
-Locally, if you want to build and preview the website, you'll need to ensure that `rotemplate` is installed, and then build your website:
-
-```r
-remotes::install_github("ropensci/rotemplate")
-pkgdown::build_site()
-```
-
-#### Make sure the website has a favicon
-
-If your package has no logo of its own, use the rOpenSci hex by running the code below, that will create a pkgdown/ folder with favicon files.
-
-```r
-# remotes::install_github("ropenscilabs/rodev")
-rodev::use_ro_favicon()
-```
-
-If your package has a logo, run `usethis::use_logo()` with the path to it, and then `pkgdown::build_favicon()`.
-
-## Examples "in the wild"
-
-* [`cyphr`](https://ropensci.github.io/cyphr/)
-
-* [`drake`](https://ropensci.github.io/drake/)
-
-* [`riem`](https://ropensci.github.io/riem/)
-
-* [`ropenaq`](https://ropensci.github.io/ropenaq/)
-
-* [`rotl`](https://ropensci.github.io/rotl/)
-
-* [`stplanr`](https://ropensci.github.io/stplanr/)
+* [`stplanr`](https://docs.ropensci.org/stplanr/)
 
 * [`visdat`](http://visdat.njtierney.com/)
+
+* [`magick`](https://docs.ropensci.org/magick/)
+
