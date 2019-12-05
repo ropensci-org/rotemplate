@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# rotemplate <a href='https://ropensci.github.io/rotemplate'><img src='man/figures/logo.png' align="right" height="134.5" /></a>
+# rotemplate <a href='https://docs.ropensci.org/rotemplate'><img src='man/figures/logo.png' align="right" height="134.5" /></a>
 
 <!-- badges: start -->
 
