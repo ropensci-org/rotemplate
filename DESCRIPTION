@@ -17,7 +17,7 @@ Authors@R:
 Description: This is a private template for use by rOpenSci
     packages.  Please don't use it for your own non-rOpenSci package.
 License: MIT + file LICENSE
-URL: https://github.com/ropensci/rotemplate
+URL: https://docs.ropensci.org/rotemplate, https://github.com/ropensci/rotemplate
 BugReports: https://github.com/ropensci/rotemplate/issues
 Suggests: 
     knitr,
