@@ -31,7 +31,7 @@ a:focus, a:hover {
 }
 
 .navbar {
-  background: linear-gradient(94.25deg, rgb(100, 164, 239) 1.55%, rgb(66, 127, 212) 98.46%);
+  background: url(https://ropensci.org/images/svg/footer-cube.svg) bottom/contain no-repeat,linear-gradient(94.45deg,#427fd4 1.55%,#64a4ef 98.46%);
   transition: all 0.3s ease;
   box-shadow: 0 0 15px 5px rgba(0,0,0,.15);
   border: none;
