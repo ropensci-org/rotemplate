@@ -16,5 +16,5 @@ navbar:
     right: [search, intro, reference, articles, tutorials, news, github]
   components:
     ropensci:
-      text: ropensci
+      text: rOpenSci
       href: https://ropensci.org

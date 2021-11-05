@@ -16,3 +16,95 @@
   font-size: 2rem;
   color: white;
 }
+
+
+/* Everything below here is used for the footer */
+
+
+/* Position hack to get full width footer even though pkgdown puts it inside a container
+ * See: https://css-tricks.com/full-width-containers-limited-width-parents/
+ */
+
+footer {
+  background: url(https://ropensci.org/images/svg/footer-cube.svg) bottom/contain no-repeat,linear-gradient(94.45deg,#427fd4 1.55%,#64a4ef 98.46%);
+  font-size: 15.75px;
+  color: #fff;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  line-height: 22px;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+}
+
+footer img {
+  width: 100px;
+}
+
+footer .icon {
+  width: 20%;
+  font-size: 21.6px;
+  margin-top: 9px;
+}
+
+footer h5 {
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 13.5px;
+  margin-bottom: 10px;
+}
+
+footer ul {
+  text-align: left;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+footer ul li {
+  line-height: 32px;
+}
+
+footer ul li a {
+  text-decoration: none;
+  color: #fff;
+}
+
+footer a:hover {
+  text-decoration: none;
+  color: white;
+}
+
+footer a {
+  color: #fff;
+}
+
+footer p {
+  font-size: inherit;
+  line-height: 28.8px;
+}
+
+.top-4 {
+  margin-top: 20px;
+}
+
+.bottom-8 {
+  margin-bottom: 40px;
+}
+
+@media screen and (max-width: 991px) {
+  .docsearch {
+    display: none;
+  }
+}
+
+html{
+  overflow-x: hidden;
+}
+
+.cc-revoke {
+  display: none !important;
+}

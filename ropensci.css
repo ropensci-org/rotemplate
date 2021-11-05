@@ -58,6 +58,10 @@
     background-color: #fff;
 }
 
+.navbar .nav-link:hover {
+  color: white;
+}
+
 .navbar .navbar-brand:hover {
   color: #fff;
 }
