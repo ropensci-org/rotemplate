@@ -1,21 +1,4 @@
-/* general ----------------------------------------------- */
-
-body {
-  color: #333E50;
-}
-
-a {
-  color: #1b6ada;
-}
-
-a:focus, a:hover {
-  color: #1b6ada;
-  text-decoration: underline;
-}
-
-.h1, .h2, .h3, h1, h2, h3{
-  color: #5c677e;
-}
+/* general -----------------------------------------------
 
 .btn-primary {
     color: #fff;
@@ -235,3 +218,4 @@ html{
 .cc-revoke {
   display: none !important;
 }
+*/

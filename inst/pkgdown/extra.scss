@@ -1,0 +1,18 @@
+.navbar {
+  background: url(https://ropensci.org/images/svg/footer-cube.svg) bottom/contain no-repeat,linear-gradient(94.45deg,#427fd4 1.55%,#64a4ef 98.46%);
+  transition: all 0.3s ease;
+  box-shadow: 0 0 15px 5px rgba(0,0,0,.15);
+  border: none;
+  min-height: 40px;
+}
+
+.navbar a.nav-link {
+	font-size: 1.2rem;
+	padding-bottom: 10px !important;
+	padding-top: 10px !important;
+}
+
+.nav-text.text-muted.me-auto {
+  font-size: 2rem;
+  color: white;
+}
