@@ -1,0 +1,64 @@
+# Workflow derived from https://github.com/r-lib/actions/tree/master/examples
+# Need help debugging build failures? Start at https://github.com/r-lib/actions#where-to-find-help
+on:
+  pull_request:
+    branches: [master, main]
+
+name: pkgdown
+
+jobs:
+  pkgdown:
+    if: github.event.pull_request.head.repo.fork == false
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+      NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+      NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: r-lib/actions/setup-r@v1
+        with:
+          use-public-rspm: true
+
+      - uses: r-lib/actions/setup-pandoc@v1
+
+      - uses: r-lib/actions/setup-tinytex@v1
+
+      - uses: r-lib/actions/setup-r-dependencies@v1
+        with:
+          extra-packages: >
+            r-lib/pkgdown
+          needs: website
+
+      - name: Install package
+        run: R CMD INSTALL .
+
+      - name: Create website
+        if: contains(env.isPush, 'false')
+        run: |
+          pkgdown::build_site()
+        shell: Rscript {0}
+
+      - name: Create index file
+        if: contains(env.isPush, 'false')
+        run: |
+          echo '<!DOCTYPE html><html><head><meta http-equiv="refresh" content="0;URL=/dev/index.html" />  <script language="javascript"> window.location.replace('/dev/index.html')</script></head></html>' > ./docs/index.html
+
+      - name: Deploy to Netlify
+        if: contains(env.isPush, 'false')
+        id: netlify-deploy
+        uses: nwtgck/actions-netlify@v1.1
+        with:
+          publish-dir: './docs'
+          production-branch: master
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          deploy-message:
+            'Deploy from GHA: ${{ github.event.pull_request.title || github.event.head_commit.message }} (${{ github.sha }})'
+          # these all default to 'true'
+          enable-pull-request-comment: false
+          enable-commit-comment: false
+          # enable-commit-status: true
+          #o verwrites-pull-request-comment: true
+        timeout-minutes: 1
