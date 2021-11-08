@@ -18,3 +18,24 @@ navbar:
   structure:
     left:  []
     right: [search, intro, reference, articles, tutorials, news, github]
+
+authors:
+  rOpenSci:
+    href: https://ropensci.org
+    html: <img src='https://github.com/ropensci.png' height=24>
+  Jeroen Ooms:
+    href: https://github.com/jeroen
+  Karthik Ram:
+    href: https://ram.berkeley.edu/
+  Maëlle Salmon:
+    href: https://masalmon.eu
+  Mark Padgham:
+    href: https://mpadge.github.io/
+  Noam Ross:
+    href: http://www.noamross.net/
+  Scott Chamberlain:
+    href: https://scottchamberlain.info/
+  Stefanie Butland:
+    href: https://stefaniebutland.netlify.app/
+  Steffi LaZerte:
+    href: http://steffilazerte.ca/
