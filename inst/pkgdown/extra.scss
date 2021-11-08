@@ -8,8 +8,6 @@
 
 .navbar a.nav-link {
 	font-size: 1.2rem;
-	padding-bottom: 10px !important;
-	padding-top: 10px !important;
 }
 
 .navbar-nav a:hover {
@@ -62,6 +60,9 @@
  footer a:hover, footer ul li a:hover {
    text-decoration: underline !important;
  }
+.cc-revoke {
+  display: none !important;
+}
 
 footer {
   background: url(https://ropensci.org/images/svg/footer-cube.svg) bottom/contain no-repeat,linear-gradient(94.45deg,#427fd4 1.55%,#64a4ef 98.46%);
@@ -79,6 +80,7 @@ footer {
 
 footer img {
   width: 100px;
+  max-width: 10vw;
 }
 
 footer .icon {
@@ -131,18 +133,4 @@ footer p {
 
 .bottom-8 {
   margin-bottom: 40px;
-}
-
-@media screen and (max-width: 991px) {
-  .docsearch {
-    display: none;
-  }
-}
-
-html{
-  overflow-x: hidden;
-}
-
-.cc-revoke {
-  display: none !important;
 }

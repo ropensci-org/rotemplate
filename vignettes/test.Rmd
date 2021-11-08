@@ -20,6 +20,33 @@ library(rotemplate)
 
 ## Title 1
 
+Some code
+
+```r
+library(magick)
+tiger <- image_read_svg('http://jeroen.github.io/images/tiger.svg', width = 350)
+print(tiger)
+tiger_png <- image_convert(tiger, "png")
+image_info(tiger_png)
+# Example image
+frink <- image_read("https://jeroen.github.io/images/frink.png")
+print(frink)
+x <- 1
+x <- x + 1
+x <- x + 1
+x <- x + 1
+x <- x + 1
+x <- x + 1
+x <- x + 1
+x <- x + 1
+x <- x + 1
+x <- x + 1
+x <- x + 1
+x <- x + 1
+x <- x + 1
+x <- x + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1
+```
+
 ### Subtitle 1
 
 
