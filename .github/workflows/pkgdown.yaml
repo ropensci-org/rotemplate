@@ -40,10 +40,6 @@ jobs:
           pkgdown::build_site()
         shell: Rscript {0}
 
-      - name: Create index file
-        run: |
-          echo '<!DOCTYPE html><html><head><meta http-equiv="refresh" content="0;URL=/dev/index.html" />  <script language="javascript"> window.location.replace('/dev/index.html')</script></head></html>' > ./docs/index.html
-
       - name: Deploy to Netlify
         id: netlify-deploy
         uses: nwtgck/actions-netlify@v1.1
