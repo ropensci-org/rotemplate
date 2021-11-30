@@ -1,4 +1,6 @@
 template:
+  includes:
+    before_title: '<a href="https://ropensci.org"><img src="https://ropensci.org/img/icon_short_white.svg" id="hexlogo" alt="rOpenSci"></a>'
   bootstrap: 5
   bslib:
     bg: "white"
@@ -18,6 +20,7 @@ navbar:
   structure:
     left:  []
     right: [search, intro, reference, articles, tutorials, news, github]
+
 
 authors:
   rOpenSci:
