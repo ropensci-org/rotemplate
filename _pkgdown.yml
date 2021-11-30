@@ -5,5 +5,12 @@ template:
 
 destination: docs
 
-toc:
-  depth: 3
+reference:
+- title: Test functions
+- contents:
+  - test
+  - test1
+- subtitle: Lists
+  contents:
+    - test3
+    - test4
