@@ -16,6 +16,7 @@ template:
     navbar-light-brand-hover-color: "white"
     text-muted: "white"
     navbar-light-hover-color: "white"
+    gray-300: "#dee2e6"
 navbar:
   structure:
     left:  []
