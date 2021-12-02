@@ -143,3 +143,11 @@ footer {
 .template-reference-index h3 {
   font-size: 1.5rem;
 }
+
+/* Code blocks */
+@media (max-width: 575.98px){
+div>div>pre {
+ border-left: none;
+ border-right: none;
+}
+}

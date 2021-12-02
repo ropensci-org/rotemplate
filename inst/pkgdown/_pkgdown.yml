@@ -17,6 +17,8 @@ template:
     text-muted: "white"
     navbar-light-hover-color: "white"
     gray-300: "#dee2e6"
+    border-radius: 0.5rem
+    btn-border-radius: 0.25rem
 navbar:
   structure:
     left:  []
