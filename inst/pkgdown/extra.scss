@@ -151,3 +151,12 @@ div>div>pre {
  border-right: none;
 }
 }
+
+/* too long words */
+body {
+    word-wrap: break-word;
+}
+
+html{
+  overflow-x: hidden;
+}
