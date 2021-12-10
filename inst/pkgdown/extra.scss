@@ -1,0 +1,166 @@
+/* Navbar */
+.navbar {
+  background: url(https://ropensci.org/images/svg/footer-cube.svg) bottom/contain no-repeat,linear-gradient(94.45deg,#427fd4 1.55%,#64a4ef 98.46%);
+  transition: all 0.3s ease;
+  box-shadow: 0 0 15px 5px rgba(0,0,0,.15);
+  border: none;
+  min-height: 40px;
+}
+
+.navbar a.nav-link {
+	font-size: 1.2rem;
+}
+
+.navbar-nav a:hover {
+  text-decoration: underline;
+}
+
+#hexlogo {
+  height: 40px;
+  float: left;
+  margin: 5px;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+@media screen and (min-width: 768px) {
+  #hexlogo {
+    height: 30px;
+  }
+  .navbar .navbar-brand {
+    line-height: 19px;
+  }
+  .navbar .navbar-form {
+    margin: 3px 5px 3px 5px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .navbar .navbar-brand {
+    padding-right: 0;
+    margin-right: -120px;
+  }
+}
+
+/* Footer */
+
+
+/* Position hack to get full width footer even though pkgdown puts it inside a container
+ * See: https://css-tricks.com/full-width-containers-limited-width-parents/
+ */
+
+ footer h5 {
+   color: white;
+ }
+
+ footer a {
+   text-decoration: none;
+ }
+
+ footer a:hover, footer ul li a:hover {
+   text-decoration: underline !important;
+ }
+.cc-revoke {
+  display: none !important;
+}
+
+footer {
+  background: url(https://ropensci.org/images/svg/footer-cube.svg) bottom/contain no-repeat,linear-gradient(94.45deg,#427fd4 1.55%,#64a4ef 98.46%);
+  font-size: 18px;
+  color: #fff;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  line-height: 22px;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+}
+
+footer img {
+  width: 100px;
+  max-width: 10vw;
+}
+
+footer .icon {
+  width: 20%;
+  font-size: 21.6px;
+  margin-top: 9px;
+}
+
+footer h5 {
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 13.5px;
+  margin-bottom: 10px;
+}
+
+footer ul {
+  text-align: left;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+footer ul li {
+  line-height: 32px;
+}
+
+footer ul li a {
+  text-decoration: none;
+  color: #fff;
+}
+
+footer a:hover {
+  text-decoration: none;
+  color: white;
+}
+
+footer a {
+  color: #fff;
+}
+
+footer p {
+  font-size: inherit;
+  line-height: 28.8px;
+}
+
+.top-4 {
+  margin-top: 20px;
+}
+
+.bottom-8 {
+  margin-bottom: 40px;
+}
+
+footer {
+    margin-bottom: 0;
+}
+
+/* Reference index. To make it very different from h2 */
+.template-reference-index h3 {
+  font-size: 1.5rem;
+}
+
+/* Code blocks */
+@media (max-width: 575.98px){
+div>div>pre {
+ border-left: none;
+ border-right: none;
+}
+}
+
+/* too long words */
+body {
+    word-wrap: break-word;
+}
+
+html{
+  overflow-x: hidden;
+}
+
+main h1 img {
+  max-width: 120px;
+}

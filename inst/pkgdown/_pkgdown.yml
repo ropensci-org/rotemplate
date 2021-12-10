@@ -1,0 +1,47 @@
+template:
+  includes:
+    before_title: '<a href="https://ropensci.org"><img src="https://ropensci.org/img/icon_short_white.svg" id="hexlogo" alt="rOpenSci"></a>'
+  bootstrap: 5
+  bslib:
+    bg: "white"
+    fg: "#283140"
+    primary: "#1b6ada"
+    dropdown-link-hover-bg: "#64a4ef"
+    dropdown-link-hover-color: "white"
+    dropdown-link-active-color: "white"
+    headings-color: "#5c677e"
+    navbar-brand-font-size: "2rem"
+    navbar-light-color: "white"
+    navbar-light-brand-color: "white"
+    navbar-light-brand-hover-color: "white"
+    text-muted: "white"
+    navbar-light-hover-color: "white"
+    gray-300: "#dee2e6"
+    border-radius: 0.5rem
+    btn-border-radius: 0.25rem
+navbar:
+  structure:
+    left:  []
+    right: [search, intro, reference, articles, tutorials, news, github]
+
+
+authors:
+  rOpenSci:
+    href: https://ropensci.org
+    html: <img src='https://github.com/ropensci.png' height=24>
+  Jeroen Ooms:
+    href: https://github.com/jeroen
+  Karthik Ram:
+    href: https://ram.berkeley.edu/
+  Maëlle Salmon:
+    href: https://masalmon.eu
+  Mark Padgham:
+    href: https://mpadge.github.io/
+  Noam Ross:
+    href: http://www.noamross.net/
+  Scott Chamberlain:
+    href: https://scottchamberlain.info/
+  Stefanie Butland:
+    href: https://stefaniebutland.netlify.app/
+  Steffi LaZerte:
+    href: https://steffilazerte.ca/

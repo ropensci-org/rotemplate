@@ -52,18 +52,18 @@ template:
 
 ## Example sites
 
-  - [`cyphr`](https://docs.ropensci.org/cyphr/)
+-   [`cyphr`](https://docs.ropensci.org/cyphr/)
 
-  - [`drake`](https://docs.ropensci.org/drake/)
+-   [`drake`](https://docs.ropensci.org/drake/)
 
-  - [`riem`](https://docs.ropensci.org/riem/)
+-   [`riem`](https://docs.ropensci.org/riem/)
 
-  - [`ropenaq`](https://docs.ropensci.org/ropenaq/)
+-   [`ropenaq`](https://docs.ropensci.org/ropenaq/)
 
-  - [`rotl`](https://docs.ropensci.org/rotl/)
+-   [`rotl`](https://docs.ropensci.org/rotl/)
 
-  - [`stplanr`](https://docs.ropensci.org/stplanr/)
+-   [`stplanr`](https://docs.ropensci.org/stplanr/)
 
-  - [`visdat`](http://visdat.njtierney.com/)
+-   [`visdat`](http://visdat.njtierney.com/)
 
-  - [`magick`](https://docs.ropensci.org/magick/)
+-   [`magick`](https://docs.ropensci.org/magick/)

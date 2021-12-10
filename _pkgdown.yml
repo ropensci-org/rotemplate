@@ -5,10 +5,15 @@ template:
 
 destination: docs
 
-toc:
-  depth: 3
-
-authors:
-  rOpenSci:
-    href: https://ropensci.org
-    html: <img src='https://github.com/ropensci.png' height=24>
+reference:
+- title: Build a site
+- contents:
+  - build_ro_site
+- title: Test functions
+- contents:
+  - test
+  - test2
+- subtitle: Lists
+  contents:
+    - test3
+    - test4
