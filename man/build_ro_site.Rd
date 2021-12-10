@@ -4,12 +4,14 @@
 \alias{build_ro_site}
 \title{Build website using rotemplate}
 \usage{
-build_ro_site(pkg = ".", preview = TRUE, ...)
+build_ro_site(pkg = ".", preview = TRUE, override = NULL, ...)
 }
 \arguments{
 \item{pkg}{Path to package folder}
 
-\item{preview}{Wether to preview the website (servr will be used)}
+\item{preview}{preview the website (servr will be used)}
+
+\item{override}{passed to [pkgdown::build_site]}
 
 \item{...}{}
 }

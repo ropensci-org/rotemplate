@@ -1,16 +1,17 @@
 #' Build website using rotemplate
 #'
 #' @param pkg Path to package folder
-#' @param preview Wether to preview the website (servr will be used)
+#' @param preview preview the website (servr will be used)
+#' @param override passed to [pkgdown::build_site]
 #' @param ...
 #'
 #' @return Nothing
 #' @export
 #'
-build_ro_site <- function(pkg = ".", preview = TRUE, ...) {
+build_ro_site <- function(pkg = ".", preview = TRUE, override = NULL, ...) {
   pkg <- pkgdown::as_pkgdown(
     pkg,
-    override = list(template = list(package = "rotemplate"))
+    override = c(override, list(template = list(package = "rotemplate")))
   )
   pkg$meta$navbar <- NULL
 
