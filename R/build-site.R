@@ -32,6 +32,7 @@ build_ro_site <- function(path = ".", preview = TRUE, destination = NULL, instal
     destination = destination
   )
   find_and_fix_readme(path, pkgname)
+  Sys.unsetenv('CI') #TODO: https://github.com/r-lib/pkgdown/issues/1958
   pkg <- pkgdown::as_pkgdown(path, override = override)
   if(length(pkg$meta$navbar))
     pkg$meta$navbar$type<- NULL
