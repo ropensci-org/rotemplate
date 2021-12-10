@@ -1,4 +1,4 @@
-#' Build rOpenSci docs page
+#' Build rOpenSci docs sites
 #'
 #' Wrapper for [pkgdown::build_site] that we use to build the websites
 #' for `https://docs.ropensci.org`. Sets a theme and logo, checks if
@@ -15,7 +15,7 @@
 #' @param destination path where to save the docs website
 #' @param install passed to [pkgdown::build_site]. Default is to _not_ reinstall the package.
 #' @param ... passed to [pkgdown::build_site]
-build_ro_site <- function(path = ".", preview = TRUE, destination = NULL, install = FALSE, ...) {
+build_ropensci_docs <- function(path = ".", destination = NULL, install = FALSE, preview = interactive(), ...) {
   path <- normalizePath(path, mustWork = TRUE)
   desc <- as.data.frame(read.dcf(file.path(path, 'DESCRIPTION')))
   pkgname <- desc$Package

@@ -17,8 +17,8 @@ site locally use this:
 
 ``` r
 library(rotemplate)
-install.packages("yourpackage")
-rotemplate::build_ro_site()
+#install.packages("yourpkg")
+rotemplate::build_ropensci_docs("path/to/yourpkg")
 ```
 
 Everything else can be configured as usual via the `_pkgdown.yml` file

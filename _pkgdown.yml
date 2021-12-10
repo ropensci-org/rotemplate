@@ -8,7 +8,7 @@ destination: docs
 reference:
 - title: Build a site
 - contents:
-  - build_ro_site
+  - build_ropensci_docs
 - title: Test functions
 - contents:
   - test
