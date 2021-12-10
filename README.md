@@ -1,16 +1,4 @@
-
-<!-- README.md is generated from README.Rmd. Please edit that file -->
-
 # rotemplate <a href='https://docs.ropensci.org/rotemplate'><img src='man/figures/logo.png' align="right" height="134.5" /></a>
-
-<!-- badges: start -->
-
-[![Project Status: WIP – Initial development is in progress, but there
-has not yet been a stable, usable release suitable for the
-public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
-[![Build
-Status](https://travis-ci.org/ropensci/rotemplate.svg?branch=master)](https://travis-ci.org/ropensci/rotemplate)
-<!-- badges: end -->
 
 rotemplate provides a custom pkgdown template for rOpenSci packages. We
 use this to render sites at `https://docs.ropensci.org`. Please don’t
@@ -28,8 +16,9 @@ don’t have to do anything to make this work. If you want to test your
 site locally use this:
 
 ``` r
-template <- list(package = "rotemplate")
-pkgdown::build_site(devel = FALSE, override = list(template = template))
+library(rotemplate)
+install.packages("yourpackage")
+rotemplate::build_ro_site()
 ```
 
 Everything else can be configured as usual via the `_pkgdown.yml` file
