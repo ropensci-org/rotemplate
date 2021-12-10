@@ -6,6 +6,9 @@ template:
 destination: docs
 
 reference:
+- title: Build a site
+- contents:
+  - build_ro_site
 - title: Test functions
 - contents:
   - test
