@@ -2,22 +2,35 @@
 % Please edit documentation in R/build-site.R
 \name{build_ro_site}
 \alias{build_ro_site}
-\title{Build website using rotemplate}
+\title{Build rOpenSci docs page}
 \usage{
-build_ro_site(pkg = ".", preview = TRUE, override = NULL, ...)
+build_ro_site(
+  path = ".",
+  preview = TRUE,
+  destination = NULL,
+  install = FALSE,
+  ...
+)
 }
 \arguments{
-\item{pkg}{Path to package folder}
+\item{path}{path to package source directory}
 
 \item{preview}{preview the website (servr will be used)}
 
-\item{override}{passed to [pkgdown::build_site]}
+\item{destination}{path where to save the docs website}
 
-\item{...}{}
-}
-\value{
-Nothing
+\item{install}{passed to [pkgdown::build_site]. Default is to _not_ reinstall the package.}
+
+\item{...}{passed to [pkgdown::build_site]}
 }
 \description{
-Build website using rotemplate
+Wrapper for [pkgdown::build_site] that we use to build the websites
+for `https://docs.ropensci.org`. Sets a theme and logo, checks if
+mathjax is required, and injects a logo into the readme if needed.
+}
+\details{
+Note the default behavior is to render the docs using the installed
+package, i.e. not reinstall the package on the fly (which does not
+always work well). In production, we manually install the package
+before running `build_ro_site`.
 }
