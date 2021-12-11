@@ -47,6 +47,18 @@ x <- x + 1
 x <- x + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1
 ```
 
+## Tibble with coloring
+
+```{r}
+tibble::as_tibble(iris)
+```
+
+## Test with linebreaks
+
+```{r}
+iris$Species
+```
+
 ### Subtitle 1
 
 
