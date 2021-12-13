@@ -85,17 +85,6 @@
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 
-{{#yaml}}{{#ganalytics}}
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id={{.}}"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', '{{.}}');
-</script>
-{{/ganalytics}}{{/yaml}}
 {{#has_trailingslash}}
 <!-- See https://stackoverflow.com/questions/1865837/whats-the-difference-between-window-location-and-window-location-replace — we use .replace() because we don't want the old url to appear in the browser history. -->
 <script>
