@@ -9,22 +9,34 @@
 #' always work well). In production, we manually install the package
 #' before running `build_ro_site`.
 #'
+#' @importFrom withr local_tempdir
+#'
 #' @export
 #' @param path path to package source directory
 #' @param preview preview the website (servr will be used)
 #' @param destination path where to save the docs website
 #' @param install passed to [pkgdown::build_site]. Default is to _not_ reinstall the package.
+#' @param pkg_path path to a (temporary) directory where to copy the package source and strip it of all customizations.
 #' @param ... passed to [pkgdown::build_site]
-build_ropensci_docs <- function(path = ".", destination = NULL, install = FALSE, preview = interactive(), ...) {
+build_ropensci_docs <- function(path = ".", destination = NULL, install = FALSE, preview = interactive(), pkg_path = NULL,...) {
+
+  if (is.null(pkg_path)) pkg_path <- withr::local_tempdir(.local_envir = parent.frame(n = 2))
+
   path <- normalizePath(path, mustWork = TRUE)
-  desc <- as.data.frame(read.dcf(file.path(path, 'DESCRIPTION')))
+  fs::dir_copy(path, new_path = pkg_path, overwrite = TRUE)
+
+  delete_file(file.path(pkg_path, "pkgdown", "extra.css"))
+  delete_file(file.path(pkg_path, "pkgdown", "extra.scss"))
+  delete_dir(file.path(pkg_path, "pkgdown", "template"))
+
+  desc <- as.data.frame(read.dcf(file.path(pkg_path, 'DESCRIPTION')))
   pkgname <- desc$Package
   title <- sprintf("rOpenSci: %s", pkgname)
   deploy_url <- sprintf("https://docs.ropensci.org/%s", pkgname)
   override <- list(
     template = list(
       package = "rotemplate",
-      mathjax = need_mathjax(path),
+      mathjax = need_mathjax(pkg_path),
       theme = NULL,
       bootswatch = NULL,
       path = NULL,
@@ -40,10 +52,10 @@ build_ropensci_docs <- function(path = ".", destination = NULL, install = FALSE,
     url = deploy_url,
     destination = destination
   )
-  find_and_fix_readme(path, pkgname)
+  find_and_fix_readme(pkg_path, pkgname)
   Sys.setenv(NOT_CRAN="true")
   Sys.unsetenv('CI') #TODO: https://github.com/r-lib/pkgdown/issues/1958
-  pkg <- pkgdown::as_pkgdown(path, override = override)
+  pkg <- pkgdown::as_pkgdown(pkg_path, override = override)
   if(length(pkg$meta$navbar))
     pkg$meta$navbar$type<- NULL
 
@@ -115,4 +127,16 @@ find_h1_line <- function(txt){
 
 find_old_footer_banner <- function(txt){
   which(grepl('\\[.*\\]\\(.*/(ropensci|github)_footer.png\\)', txt))
+}
+
+delete_file <- function(path) {
+  if (fs::file_exists(path)) {
+    fs::file_delete(path)
+  }
+}
+
+delete_dir <- function(path) {
+  if (fs::dir_exists(path)) {
+    fs::dir_delete(path)
+  }
 }

@@ -9,6 +9,7 @@ build_ropensci_docs(
   destination = NULL,
   install = FALSE,
   preview = interactive(),
+  pkg_path = NULL,
   ...
 )
 }
@@ -20,6 +21,8 @@ build_ropensci_docs(
 \item{install}{passed to [pkgdown::build_site]. Default is to _not_ reinstall the package.}
 
 \item{preview}{preview the website (servr will be used)}
+
+\item{pkg_path}{path to a (temporary) directory where to copy the package source and strip it of all customizations.}
 
 \item{...}{passed to [pkgdown::build_site]}
 }

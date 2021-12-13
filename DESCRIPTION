@@ -29,7 +29,9 @@ LazyData: true
 RoxygenNote: 7.1.2
 Imports:
     commonmark,
+    withr,
     pkgdown (>= 2.0.1),
     servr,
     xml2,
-    yaml
+    yaml,
+    fs
