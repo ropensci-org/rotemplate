@@ -24,7 +24,16 @@ build_ropensci_docs <- function(path = ".", destination = NULL, install = FALSE,
   override <- list(
     template = list(
       package = "rotemplate",
-      mathjax = need_mathjax(path)
+      mathjax = need_mathjax(path),
+      theme = NULL,
+      bootswatch = NULL,
+      path = NULL,
+      bslib = NULL,
+      bootstrap = 5,
+      noindex = NULL,
+      includes = NULL,
+      params = NULL
+      # other vars include opengraph (fine to override), trailing_slash_redirect
     ),
     development = list(mode = 'release'),
     title = title,
@@ -37,6 +46,8 @@ build_ropensci_docs <- function(path = ".", destination = NULL, install = FALSE,
   pkg <- pkgdown::as_pkgdown(path, override = override)
   if(length(pkg$meta$navbar))
     pkg$meta$navbar$type<- NULL
+
+
   pkgdown::build_site(pkg = pkg, ..., install = install, preview = FALSE, devel = FALSE)
   if (preview) {
     servr::httw(pkg$dst_path)
