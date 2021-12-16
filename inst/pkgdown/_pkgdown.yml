@@ -20,10 +20,7 @@ template:
     border-radius: 0.5rem
     btn-border-radius: 0.25rem
     font-family-sans-serif: "proxima-nova"
-    base_font:
-      link:
-        family: "proxima-nova"
-        href: "/extra.css"
+    base_font: "proxima-nova"
     code_font: "Fira Mono"
 navbar:
   structure:
