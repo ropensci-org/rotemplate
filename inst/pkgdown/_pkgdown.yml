@@ -19,6 +19,8 @@ template:
     gray-300: "#dee2e6"
     border-radius: 0.5rem
     btn-border-radius: 0.25rem
+    font-family-sans-serif: "proxima-nova"
+    code_font: {google: "Fira Mono"}
 navbar:
   structure:
     left:  []
