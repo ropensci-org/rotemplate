@@ -14,6 +14,7 @@ template:
     navbar-light-color: "white"
     navbar-light-brand-color: "white"
     navbar-light-brand-hover-color: "white"
+    text-muted: "#54585F"
     navbar-light-hover-color: "white"
     gray-300: "#dee2e6"
     border-radius: 0.5rem
