@@ -24,8 +24,7 @@ build_ropensci_docs <- function(path = ".", destination = NULL, install = FALSE,
   override <- list(
     template = list(
       package = "rotemplate",
-      mathjax = need_mathjax(path),
-      params = NULL,
+      params = list(mathjax = need_mathjax(path)),
       path = NULL
     ),
     development = list(mode = 'release'),
@@ -46,9 +45,9 @@ build_ropensci_docs <- function(path = ".", destination = NULL, install = FALSE,
 }
 
 need_mathjax <- function(path){
-  pkgdown_yml <- file.path(path, '_pkgdown.yml')
+  pkgdown_yml <- pkgdown_config_path()
   isTRUE(try({
-    if(file.exists(pkgdown_yml)){
+    if(!is.null(pkgdown_yml)){
       pkgdown_config <- yaml::read_yaml(pkgdown_yml)
       if(isTRUE(pkgdown_config$mathjax) || isTRUE(pkgdown_config$template$params$mathjax)){
         message("Site needs mathjax library")
@@ -106,4 +105,33 @@ find_h1_line <- function(txt){
 
 find_old_footer_banner <- function(txt){
   which(grepl('\\[.*\\]\\(.*/(ropensci|github)_footer.png\\)', txt))
+}
+
+# from https://github.com/r-lib/usethis/blob/865e9294f2f3f21b43c545f6b896360a56df28fd/R/pkgdown.R#L142
+pkgdown_config_path <- function(path) {
+  path_first_existing(
+    file.path(
+      path,
+      c(
+        "_pkgdown.yml",
+        "_pkgdown.yaml",
+        "pkgdown/_pkgdown.yml",
+        "pkgdown/_pkgdown.yaml",
+        "inst/_pkgdown.yml",
+        "inst/_pkgdown.yaml"
+      )
+    )
+  )
+}
+
+# adapted from https://github.com/r-lib/usethis/blob/7c8e0049a1e40e6dcabbde069bb29576215a11b6/R/utils.R#L75
+path_first_existing <- function(paths) {
+  for (i in seq_along(paths)) {
+    path <- paths[[i]]
+    if (file.exists(path)) {
+      return(path)
+    }
+  }
+
+  NULL
 }
