@@ -35,7 +35,7 @@ jobs:
 
       - name: Create website
         run: |
-          pkgdown::build_site()
+          rotemplate::build_ropensci_docs()
         shell: Rscript {0}
 
       - name: Deploy to Netlify
