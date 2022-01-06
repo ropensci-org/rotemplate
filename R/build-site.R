@@ -45,9 +45,9 @@ build_ropensci_docs <- function(path = ".", destination = NULL, install = FALSE,
 }
 
 need_mathjax <- function(path){
-  pkgdown_yml <- file.path(path, '_pkgdown.yml')
+  pkgdown_yml <- pkgdown_config_path()
   isTRUE(try({
-    if(file.exists(pkgdown_yml)){
+    if(!is.null(pkgdown_yml)){
       pkgdown_config <- yaml::read_yaml(pkgdown_yml)
       if(isTRUE(pkgdown_config$mathjax) || isTRUE(pkgdown_config$template$params$mathjax)){
         message("Site needs mathjax library")
@@ -129,7 +129,7 @@ path_first_existing <- function(paths) {
   # manual loop with explicit use of `[[` to retain "fs" class
   for (i in seq_along(paths)) {
     path <- paths[[i]]
-    if (file_exists(path)) {
+    if (fs::file_exists(path)) {
       return(path)
     }
   }
