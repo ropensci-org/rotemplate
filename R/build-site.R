@@ -124,12 +124,11 @@ pkgdown_config_path <- function(path) {
   )
 }
 
-# from https://github.com/r-lib/usethis/blob/7c8e0049a1e40e6dcabbde069bb29576215a11b6/R/utils.R#L75
+# adapted from https://github.com/r-lib/usethis/blob/7c8e0049a1e40e6dcabbde069bb29576215a11b6/R/utils.R#L75
 path_first_existing <- function(paths) {
-  # manual loop with explicit use of `[[` to retain "fs" class
   for (i in seq_along(paths)) {
     path <- paths[[i]]
-    if (fs::file_exists(path)) {
+    if (file.exists(path)) {
       return(path)
     }
   }
