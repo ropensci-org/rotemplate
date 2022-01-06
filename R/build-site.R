@@ -45,7 +45,7 @@ build_ropensci_docs <- function(path = ".", destination = NULL, install = FALSE,
 }
 
 need_mathjax <- function(path){
-  pkgdown_yml <- pkgdown_config_path()
+  pkgdown_yml <- pkgdown_config_path(path = path)
   isTRUE(try({
     if(!is.null(pkgdown_yml)){
       pkgdown_config <- yaml::read_yaml(pkgdown_yml)
