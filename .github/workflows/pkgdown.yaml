@@ -18,24 +18,22 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - uses: r-lib/actions/setup-r@v1
+      - uses: r-lib/actions/setup-r@v2
         with:
           use-public-rspm: true
 
-      - uses: r-lib/actions/setup-pandoc@v1
+      - uses: r-lib/actions/setup-pandoc@v2
 
-      - uses: r-lib/actions/setup-tinytex@v1
-
-      - uses: r-lib/actions/setup-r-dependencies@v1
+      - uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          needs: website
+          extra-packages: rcmdcheck
 
       - name: Install package
         run: R CMD INSTALL .
 
       - name: Create website
         run: |
-          pkgdown::build_site()
+          rotemplate::build_ropensci_docs()
         shell: Rscript {0}
 
       - name: Deploy to Netlify
@@ -53,3 +51,5 @@ jobs:
           # enable-commit-status: true
           #o verwrites-pull-request-comment: true
         timeout-minutes: 1
+
+      - uses: r-lib/actions/check-r-package@v2
