@@ -31,6 +31,8 @@ jobs:
       - name: Install package
         run: R CMD INSTALL .
 
+      - uses: r-lib/actions/check-r-package@v2
+
       - name: Create website
         run: |
           rotemplate::build_ropensci_docs()
