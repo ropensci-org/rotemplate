@@ -31,8 +31,6 @@ jobs:
       - name: Install package
         run: R CMD INSTALL .
 
-      - uses: r-lib/actions/check-r-package@v2
-
       - name: Create website
         run: |
           rotemplate::build_ropensci_docs()
@@ -53,3 +51,5 @@ jobs:
           # enable-commit-status: true
           #o verwrites-pull-request-comment: true
         timeout-minutes: 1
+
+      - uses: r-lib/actions/check-r-package@v2
