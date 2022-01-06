@@ -69,6 +69,13 @@
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 
+{{#yaml}}{{#mathjax}}
+<!-- Mathjax -->
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.0/es5/tex-mml-chtml.min.js">
+</script>
+{{/mathjax}}{{/yaml}}
+
 {{#has_trailingslash}}
 <!-- See https://stackoverflow.com/questions/1865837/whats-the-difference-between-window-location-and-window-location-replace — we use .replace() because we don't want the old url to appear in the browser history. -->
 <script>
