@@ -168,3 +168,16 @@ html{
 main h1 img {
   max-width: 120px;
 }
+
+@font-face {
+  font-family: "proxima-nova";
+  src: url("https://ropensci.org/fonts/proxima/ProximaNova-Regular.eot");
+  src: local("Proxima Nova Regular"), local("ProximaNova-Regular"),
+    url("https://ropensci.org/fonts/proxima/ProximaNova-Regular.eot?#iefix") format("embedded-opentype"),
+    url("https://ropensci.org/fonts/proxima/ProximaNova-Regular.woff2") format("woff2"),
+    url("https://ropensci.org/fonts/proxima/ProximaNova-Regular.woff") format("woff"),
+    url("https://ropensci.org/fonts/proxima/ProximaNova-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: fallback;
+}

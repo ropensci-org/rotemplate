@@ -33,3 +33,4 @@ Imports:
     servr,
     xml2,
     yaml
+Roxygen: list(markdown = TRUE)

@@ -19,6 +19,7 @@ template:
     gray-300: "#dee2e6"
     border-radius: 0.5rem
     btn-border-radius: 0.25rem
+    base_font: "proxima-nova,sans-serif"
 navbar:
   structure:
     left:  []
