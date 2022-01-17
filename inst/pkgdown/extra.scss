@@ -42,6 +42,13 @@
   }
 }
 
+// undo designer choice in pkgdown to add a lot of whitespace under h1
+@media (min-width: 576px){
+  .template-home .page-header {
+      min-height: 0;
+  }
+}
+
 .nav-text.text-muted.me-auto {
   color: white !important;
 }
@@ -188,6 +195,7 @@ main h1 img {
   font-display: fallback;
 }
 
+/* Because ProximaNova is very thin by default */
 h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
   color: #484f5e;
