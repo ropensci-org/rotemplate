@@ -46,6 +46,12 @@
   color: white !important;
 }
 
+// upstream pkgdown sets those to baseline which looked bad with our logo
+.navbar > .container {
+  align-items: center;
+  -webkit-align-items: center;
+}
+
 /* Footer */
 
 
