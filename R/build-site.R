@@ -24,7 +24,7 @@ build_ropensci_docs <- function(path = ".", destination = NULL, install = FALSE,
   override <- list(
     template = list(
       package = "rotemplate",
-      params = NULL, #don't use a list here: it will get merged with the yml params instead of replaced
+      params = list(mathjax = need_mathjax(path)),
       path = NULL
     ),
     development = list(mode = 'release'),
@@ -38,8 +38,8 @@ build_ropensci_docs <- function(path = ".", destination = NULL, install = FALSE,
   pkg <- pkgdown::as_pkgdown(path, override = override)
   if(length(pkg$meta$navbar))
     pkg$meta$navbar$type <- NULL
-  if(need_mathjax(path))
-    pkg$meta$template$mathjax <- TRUE
+  if(length(pkg$meta$params))
+    pkg$meta$params$bootswatch <- NULL
   pkgdown::build_site(pkg = pkg, ..., install = install, preview = FALSE, devel = FALSE)
   if (preview) {
     servr::httw(pkg$dst_path)
