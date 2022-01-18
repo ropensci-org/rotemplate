@@ -44,6 +44,7 @@ build_ropensci_docs <- function(path = ".", destination = NULL, install = FALSE,
   if (preview) {
     servr::httw(pkg$dst_path)
   }
+  invisible(pkg$dst_path)
 }
 
 need_mathjax <- function(path){
