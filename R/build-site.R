@@ -74,11 +74,18 @@ find_and_fix_readme <- function(path, pkg){
   # From pkgdown build_home_index()
   home_files <- file.path(path, c("index.Rmd", "README.Rmd", "index.md", "README.md"))
   home_files <- Filter(file.exists, home_files)
-  if(!length(home_files))
+  if(!length(home_files)) {
     stop("Package does not contain an index.(r)md or README.(r)md file")
-  return(invisible())
+  }
+  lapply(home_files, modify_ropensci_readme, pkg = pkg)
 }
 
+modify_ropensci_readme <- function(file, pkg){
+  readme <- readLines(file)
+  ugly_footer <- find_old_footer_banner(readme)
+  readme[ugly_footer] = ""
+  writeLines(readme, file)
+}
 
 find_old_footer_banner <- function(txt){
   which(grepl('\\[.*\\]\\(.*/(ropensci|github)_footer.png\\)', txt))
