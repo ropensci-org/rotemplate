@@ -29,6 +29,7 @@ build_ropensci_docs <- function(path = ".", destination = NULL, install = FALSE,
       params = list(mathjax = need_mathjax(path), bootswatch = NULL),
       path = NULL
     ),
+    home = list(strip_header = NULL),
     navbar = list(type = NULL),
     development = list(mode = 'release'),
     title = title,
