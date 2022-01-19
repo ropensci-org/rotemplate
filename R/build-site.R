@@ -27,9 +27,9 @@ build_ropensci_docs <- function(path = ".", destination = NULL, install = FALSE,
     template = list(
       package = "rotemplate",
       params = list(mathjax = need_mathjax(path), bootswatch = NULL),
-      navbar = list(type = NULL),
       path = NULL
     ),
+    navbar = list(type = NULL),
     development = list(mode = 'release'),
     title = title,
     url = deploy_url,
