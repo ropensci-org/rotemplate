@@ -24,7 +24,8 @@ build_ropensci_docs <- function(path = ".", destination = NULL, install = FALSE,
   override <- list(
     template = list(
       package = "rotemplate",
-      params = list(mathjax = need_mathjax(path)),
+      params = list(mathjax = need_mathjax(path), bootswatch = NULL),
+      navbar = list(type = NULL),
       path = NULL
     ),
     development = list(mode = 'release'),
@@ -36,10 +37,6 @@ build_ropensci_docs <- function(path = ".", destination = NULL, install = FALSE,
   Sys.setenv(NOT_CRAN="true")
   Sys.unsetenv('CI') #TODO: https://github.com/r-lib/pkgdown/issues/1958
   pkg <- pkgdown::as_pkgdown(path, override = override)
-  if(length(pkg$meta$navbar))
-    pkg$meta$navbar$type <- NULL
-  if(length(pkg$meta$params))
-    pkg$meta$params$bootswatch <- NULL
   pkgdown::build_site(pkg = pkg, ..., install = install, preview = FALSE, devel = FALSE)
   if (preview) {
     servr::httw(pkg$dst_path)
