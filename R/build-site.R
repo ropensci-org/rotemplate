@@ -21,6 +21,8 @@ build_ropensci_docs <- function(path = ".", destination = NULL, install = FALSE,
   pkgname <- desc$Package
   title <- sprintf("rOpenSci: %s", pkgname)
   deploy_url <- sprintf("https://docs.ropensci.org/%s", pkgname)
+  #NB: pkgdown uses utils::modifyList() to merge _pkgdown.yml values with overrides.
+  #This will recursively merge lists, and delete values that are 'NULL' in overrides.
   override <- list(
     template = list(
       package = "rotemplate",
