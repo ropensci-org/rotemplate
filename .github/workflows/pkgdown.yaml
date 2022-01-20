@@ -1,14 +1,13 @@
 # Workflow derived from https://github.com/r-lib/actions/tree/master/examples
 # Need help debugging build failures? Start at https://github.com/r-lib/actions#where-to-find-help
 on:
+  push:
   pull_request:
-    branches: [master, main]
 
 name: pkgdown
 
 jobs:
   pkgdown:
-    if: github.event.pull_request.head.repo.fork == false
     runs-on: ubuntu-latest
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
