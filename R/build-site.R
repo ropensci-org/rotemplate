@@ -38,7 +38,7 @@ build_ropensci_docs <- function(path = ".", destination = NULL, install = FALSE,
   )
   find_and_fix_readme(path, pkgname)
   Sys.setenv(NOT_CRAN="true")
-  Sys.unsetenv('CI') #TODO: https://github.com/r-lib/pkgdown/issues/1958
+  #Sys.unsetenv('CI') #TODO: https://github.com/r-lib/pkgdown/issues/1958
   pkg <- pkgdown::as_pkgdown(path, override = override)
   pkgdown::build_site(pkg = pkg, ..., install = install, preview = FALSE, devel = FALSE)
   if (preview) {
