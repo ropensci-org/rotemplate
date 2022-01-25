@@ -19,7 +19,6 @@ build_ropensci_docs <- function(path = ".", destination = NULL, install = FALSE,
   path <- normalizePath(path, mustWork = TRUE)
   desc <- as.data.frame(read.dcf(file.path(path, 'DESCRIPTION')))
   pkgname <- desc$Package
-  title <- sprintf("rOpenSci: %s", pkgname)
   deploy_url <- sprintf("https://docs.ropensci.org/%s", pkgname)
   #NB: pkgdown uses utils::modifyList() to merge _pkgdown.yml values with overrides.
   #This will recursively merge lists, and delete values that are 'NULL' in overrides.
@@ -33,7 +32,6 @@ build_ropensci_docs <- function(path = ".", destination = NULL, install = FALSE,
     home = list(strip_header = NULL),
     navbar = list(type = NULL),
     development = list(mode = 'release'),
-    title = title,
     url = deploy_url,
     destination = destination
   )
