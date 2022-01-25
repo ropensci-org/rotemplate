@@ -27,7 +27,8 @@ build_ropensci_docs <- function(path = ".", destination = NULL, install = FALSE,
     template = list(
       package = "rotemplate",
       params = list(mathjax = need_mathjax(path), bootswatch = NULL),
-      path = NULL
+      path = NULL,
+      bootswatch = NULL
     ),
     home = list(strip_header = NULL),
     navbar = list(type = NULL),
@@ -36,6 +37,8 @@ build_ropensci_docs <- function(path = ".", destination = NULL, install = FALSE,
     url = deploy_url,
     destination = destination
   )
+
+  find_and_fix_readme(path, pkgname)
 
   # Inject rOpenSci logo if no logo
   logo <- find_logo(path)

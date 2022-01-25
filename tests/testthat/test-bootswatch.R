@@ -1,4 +1,4 @@
-test_that("adding mathjax works", {
+test_that("bootswatch is overriden", {
   withr::local_options(usethis.quiet = TRUE)
   temp_dir <- withr::local_tempdir()
   proj <- usethis::create_package(
@@ -10,7 +10,7 @@ test_that("adding mathjax works", {
   usethis::use_readme_md()
   usethis::use_pkgdown()
   yaml <- yaml::read_yaml("_pkgdown.yml")
-  yaml$mathjax <- TRUE
+  yaml$template<- list(bootstrap = 5, bootswatch = "readable")
   yaml::write_yaml(yaml, "_pkgdown.yml")
   expect_message({
     expect_output({
@@ -20,13 +20,9 @@ test_that("adding mathjax works", {
         examples = FALSE)
     })
   })
-  homepage <- xml2::read_html(file.path(docs, "index.html"))
-  script <- xml2::xml_find_first(homepage, ".//head/script[@id='MathJax-script']")
-  # If not present the class is xml_missing
-  testthat::expect_s3_class(script, "xml_node")
 })
 
-test_that("NOT adding mathjax works", {
+test_that("bootswatch (old syntax) is overriden", {
   withr::local_options(usethis.quiet = TRUE)
   temp_dir <- withr::local_tempdir()
   proj <- usethis::create_package(
@@ -37,6 +33,9 @@ test_that("NOT adding mathjax works", {
   usethis::local_project(proj)
   usethis::use_readme_md()
   usethis::use_pkgdown()
+  yaml <- yaml::read_yaml("_pkgdown.yml")
+  yaml$template<- list(bootstrap = 5, params = list(bootswatch = "readable"))
+  yaml::write_yaml(yaml, "_pkgdown.yml")
   expect_message({
     expect_output({
       docs <- build_ropensci_docs(
@@ -45,7 +44,4 @@ test_that("NOT adding mathjax works", {
         examples = FALSE)
     })
   })
-  homepage <- xml2::read_html(file.path(docs, "index.html"))
-  script <- xml2::xml_find_first(homepage, ".//head/script[@id='MathJax-script']")
-  testthat::expect_s3_class(script, "xml_missing")
 })
