@@ -14,8 +14,9 @@
 #' @param preview preview the website (servr will be used)
 #' @param destination path where to save the docs website
 #' @param install passed to [pkgdown::build_site]. Default is to _not_ reinstall the package.
+#' @param .verbose Whether to show informative messages.
 #' @param ... passed to [pkgdown::build_site]
-build_ropensci_docs <- function(path = ".", destination = NULL, install = FALSE, preview = interactive(), ...) {
+build_ropensci_docs <- function(path = ".", destination = NULL, install = FALSE, preview = interactive(), .verbose = TRUE, ...) {
   path <- normalizePath(path, mustWork = TRUE)
   desc <- as.data.frame(read.dcf(file.path(path, 'DESCRIPTION')))
   pkgname <- desc$Package
@@ -26,8 +27,9 @@ build_ropensci_docs <- function(path = ".", destination = NULL, install = FALSE,
   override <- list(
     template = list(
       package = "rotemplate",
-      params = list(mathjax = need_mathjax(path), bootswatch = NULL),
-      path = NULL
+      params = list(mathjax = need_mathjax(path, verbose = .verbose), bootswatch = NULL),
+      path = NULL,
+      bootswatch = NULL
     ),
     home = list(strip_header = NULL),
     navbar = list(type = NULL),
@@ -36,7 +38,7 @@ build_ropensci_docs <- function(path = ".", destination = NULL, install = FALSE,
     url = deploy_url,
     destination = destination
   )
-  find_and_fix_readme(path, pkgname)
+  find_and_fix_readme(path, pkgname, verbose = .verbose)
   Sys.setenv(NOT_CRAN="true")
   # Do not abort on check_missing_topics() for now
   # https://github.com/r-lib/pkgdown/blob/HEAD/R/build-reference-index.R#L146
@@ -49,36 +51,36 @@ build_ropensci_docs <- function(path = ".", destination = NULL, install = FALSE,
   invisible(pkg$dst_path)
 }
 
-need_mathjax <- function(path){
+need_mathjax <- function(path, verbose){
   pkgdown_yml <- pkgdown_config_path(path = path)
   isTRUE(try({
     if(!is.null(pkgdown_yml)){
       pkgdown_config <- yaml::read_yaml(pkgdown_yml)
       if(isTRUE(pkgdown_config$mathjax) || isTRUE(pkgdown_config$template$params$mathjax)){
-        message("Site needs mathjax library")
+        if (verbose) message("Site needs mathjax library")
         return(TRUE)
       }
     }
-    message("Site does not need mathjax")
+    if (verbose) message("Site does not need mathjax")
   }))
 }
 
-find_and_fix_readme <- function(path, pkg){
+find_and_fix_readme <- function(path, pkg, verbose){
   # From pkgdown build_home_index()
   home_files <- file.path(path, c("index.Rmd", "README.Rmd", "index.md", "README.md"))
   home_files <- Filter(file.exists, home_files)
   if(!length(home_files))
     stop("Package does not contain an index.(r)md or README.(r)md file")
-  lapply(home_files, modify_ropensci_readme, pkg = pkg)
+  lapply(home_files, modify_ropensci_readme, pkg = pkg, verbose = verbose)
 }
 
 
-modify_ropensci_readme <- function(file, pkg){
+modify_ropensci_readme <- function(file, pkg, verbose){
   readme <- readLines(file)
   h1 <- find_h1_line(readme)
   has_logo <- isTRUE(grepl("(<img|!\\[)", h1$input))
   if(!has_logo){
-    message("Inserting rOpenSci logo in readme")
+    if (verbose) message("Inserting rOpenSci logo in readme")
     banner <- ropensci_main_banner(pkg)
     if(is.na(h1$pos)){
       readme <- c(banner, readme)
