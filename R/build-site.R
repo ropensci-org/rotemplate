@@ -40,6 +40,13 @@ build_ropensci_docs <- function(path = ".", destination = NULL, install = FALSE,
 
   find_and_fix_readme(path, pkgname)
 
+  # Prevent favicon building
+  browser()
+  favicon_dir <- file.path(path, "pkgdown", "favicon")
+  if (!dir.exists(favicon_dir)) {
+    dir.create(favicon_dir, recursive = TRUE)
+  }
+
   # Inject rOpenSci logo if no logo
   logo <- find_logo(path)
   if (is.null(logo)) {
