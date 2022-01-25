@@ -39,6 +39,8 @@ build_ropensci_docs <- function(path = ".", destination = NULL, install = FALSE,
     destination = destination
   )
 
+  find_and_fix_readme(path, pkgname)
+
   # Inject rOpenSci logo if no logo
   logo <- find_logo(path)
   if (is.null(logo)) {
@@ -77,7 +79,7 @@ need_mathjax <- function(path, verbose){
   }))
 }
 
-find_and_fix_readme <- function(path, pkg, verbose){
+find_and_fix_readme <- function(path, pkg){
   # From pkgdown build_home_index()
   home_files <- file.path(path, c("index.Rmd", "README.Rmd", "index.md", "README.md"))
   home_files <- Filter(file.exists, home_files)
