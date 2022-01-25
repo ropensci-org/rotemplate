@@ -20,7 +20,7 @@ test_that("adding mathjax works", {
         examples = FALSE)
     })
   })
-  homepage <- xml2::read_html(file.path(docs, "index.html"))
+  homepage <- xml2::read_html(file.path(docs, "index.html"), encoding = "UTF-8")
   script <- xml2::xml_find_first(homepage, ".//head/script[@id='MathJax-script']")
   # If not present the class is xml_missing
   testthat::expect_s3_class(script, "xml_node")
@@ -45,7 +45,7 @@ test_that("NOT adding mathjax works", {
         examples = FALSE)
     })
   })
-  homepage <- xml2::read_html(file.path(docs, "index.html"))
+  homepage <- xml2::read_html(file.path(docs, "index.html"), encoding = "UTF-8")
   script <- xml2::xml_find_first(homepage, ".//head/script[@id='MathJax-script']")
   testthat::expect_s3_class(script, "xml_missing")
 })
