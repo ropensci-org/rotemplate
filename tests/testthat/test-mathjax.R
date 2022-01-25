@@ -12,12 +12,13 @@ test_that("adding mathjax works", {
   yaml <- yaml::read_yaml("_pkgdown.yml")
   yaml$mathjax <- TRUE
   yaml::write_yaml(yaml, "_pkgdown.yml")
-  expect_output({
-    docs <- build_ropensci_docs(
-      .verbose = FALSE,
-      destination = "docs",
-      install = FALSE,
-      examples = FALSE)
+  expect_message({
+    expect_output({
+      docs <- build_ropensci_docs(
+        destination = "docs",
+        install = FALSE,
+        examples = FALSE)
+    })
   })
   homepage <- xml2::read_html(file.path(docs, "index.html"))
   script <- xml2::xml_find_first(homepage, ".//head/script[@id='MathJax-script']")
@@ -36,12 +37,13 @@ test_that("NOT adding mathjax works", {
   usethis::local_project(proj)
   usethis::use_readme_md()
   usethis::use_pkgdown()
-  expect_output({
-    docs <- build_ropensci_docs(
-      .verbose = FALSE,
-      destination = "docs",
-      install = FALSE,
-      examples = FALSE)
+  expect_message({
+    expect_output({
+      docs <- build_ropensci_docs(
+        destination = "docs",
+        install = FALSE,
+        examples = FALSE)
+    })
   })
   homepage <- xml2::read_html(file.path(docs, "index.html"))
   script <- xml2::xml_find_first(homepage, ".//head/script[@id='MathJax-script']")

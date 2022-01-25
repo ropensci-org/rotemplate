@@ -14,9 +14,8 @@
 #' @param preview preview the website (servr will be used)
 #' @param destination path where to save the docs website
 #' @param install passed to [pkgdown::build_site]. Default is to _not_ reinstall the package.
-#' @param .verbose Whether to show informative messages.
 #' @param ... passed to [pkgdown::build_site]
-build_ropensci_docs <- function(path = ".", destination = NULL, install = FALSE, preview = interactive(), .verbose = TRUE, ...) {
+build_ropensci_docs <- function(path = ".", destination = NULL, install = FALSE, preview = interactive(), ...) {
   path <- normalizePath(path, mustWork = TRUE)
   desc <- as.data.frame(read.dcf(file.path(path, 'DESCRIPTION')))
   pkgname <- desc$Package
@@ -27,7 +26,7 @@ build_ropensci_docs <- function(path = ".", destination = NULL, install = FALSE,
   override <- list(
     template = list(
       package = "rotemplate",
-      params = list(mathjax = need_mathjax(path, verbose = .verbose), bootswatch = NULL),
+      params = list(mathjax = need_mathjax(path), bootswatch = NULL),
       path = NULL,
       bootswatch = NULL
     ),
@@ -65,17 +64,17 @@ build_ropensci_docs <- function(path = ".", destination = NULL, install = FALSE,
   invisible(pkg$dst_path)
 }
 
-need_mathjax <- function(path, verbose){
+need_mathjax <- function(path){
   pkgdown_yml <- pkgdown_config_path(path = path)
   isTRUE(try({
     if(!is.null(pkgdown_yml)){
       pkgdown_config <- yaml::read_yaml(pkgdown_yml)
       if(isTRUE(pkgdown_config$mathjax) || isTRUE(pkgdown_config$template$params$mathjax)){
-        if (verbose) message("Site needs mathjax library")
+        message("Site needs mathjax library")
         return(TRUE)
       }
     }
-    if (verbose) message("Site does not need mathjax")
+    message("Site does not need mathjax")
   }))
 }
 

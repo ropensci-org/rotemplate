@@ -9,7 +9,6 @@ build_ropensci_docs(
   destination = NULL,
   install = FALSE,
   preview = interactive(),
-  .verbose = TRUE,
   ...
 )
 }
@@ -21,8 +20,6 @@ build_ropensci_docs(
 \item{install}{passed to \link[pkgdown:build_site]{pkgdown::build_site}. Default is to \emph{not} reinstall the package.}
 
 \item{preview}{preview the website (servr will be used)}
-
-\item{.verbose}{Whether to show informative messages.}
 
 \item{...}{passed to \link[pkgdown:build_site]{pkgdown::build_site}}
 }
