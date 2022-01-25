@@ -36,7 +36,19 @@ build_ropensci_docs <- function(path = ".", destination = NULL, install = FALSE,
     url = deploy_url,
     destination = destination
   )
-  find_and_fix_readme(path, pkgname)
+
+  # Inject rOpenSci logo if no logo
+  logo <- find_logo(path)
+  if (is.null(logo)) {
+    if (!dir.exists(file.path(path, "man", "figures"))) {
+      dir.create(file.path(path, "man", "figures"), recursive = TRUE)
+    }
+    file.copy(
+      system.file("logo.png", package = "rotemplate"),
+      file.path(path, "man", "figures", "logo.png")
+    )
+  }
+
   Sys.setenv(NOT_CRAN="true")
   # Do not abort on check_missing_topics() for now
   # https://github.com/r-lib/pkgdown/blob/HEAD/R/build-reference-index.R#L146
@@ -67,45 +79,17 @@ find_and_fix_readme <- function(path, pkg){
   # From pkgdown build_home_index()
   home_files <- file.path(path, c("index.Rmd", "README.Rmd", "index.md", "README.md"))
   home_files <- Filter(file.exists, home_files)
-  if(!length(home_files))
+  if(!length(home_files)) {
     stop("Package does not contain an index.(r)md or README.(r)md file")
+  }
   lapply(home_files, modify_ropensci_readme, pkg = pkg)
 }
 
-
 modify_ropensci_readme <- function(file, pkg){
   readme <- readLines(file)
-  h1 <- find_h1_line(readme)
-  has_logo <- isTRUE(grepl("(<img|!\\[)", h1$input))
-  if(!has_logo){
-    message("Inserting rOpenSci logo in readme")
-    banner <- ropensci_main_banner(pkg)
-    if(is.na(h1$pos)){
-      readme <- c(banner, readme)
-    } else {
-      readme[h1$pos] <- banner
-      if(isTRUE(grepl("^[= ]+$", readme[h1$pos + 1])))
-        readme[h1$pos + 1] = ""
-    }
-  }
   ugly_footer <- find_old_footer_banner(readme)
   readme[ugly_footer] = ""
   writeLines(readme, file)
-}
-
-ropensci_main_banner <- function(title){
-  sprintf('# rOpenSci: The *%s* package <img src="hexlogo.png" align="right" width="120" />', title)
-}
-
-find_h1_line <- function(txt){
-  doc <- xml2::read_xml(commonmark::markdown_xml(txt, sourcepos = TRUE))
-  doc <- xml2::xml_ns_strip(doc)
-  node <- xml2::xml_find_first(doc, "//heading[@level='1'][text]")
-  sourcepos <- xml2::xml_attr(node, 'sourcepos')
-  pos <- as.integer(strsplit(sourcepos, ':')[[1]][1])
-  title <- xml2::xml_text(xml2::xml_find_all(node, 'text'))
-  input <- xml2::xml_text(node)
-  list(pos = pos, title = title, input = input)
 }
 
 find_old_footer_banner <- function(txt){
@@ -125,6 +109,18 @@ pkgdown_config_path <- function(path) {
         "inst/_pkgdown.yml",
         "inst/_pkgdown.yaml"
       )
+    )
+  )
+}
+
+# from https://github.com/r-lib/pkgdown/blob/dcec859cab08ff8852f5ee5ab09f3f57ec038805/R/build-logo.R#L10
+find_logo <- function(path) {
+  path_first_existing(
+    c(
+      file.path(path, "logo.svg"),
+      file.path(path, "man", "figures", "logo.svg"),
+      file.path(path, "logo.png"),
+      file.path(path, "man", "figures", "logo.png")
     )
   )
 }
