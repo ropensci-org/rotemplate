@@ -30,7 +30,7 @@ build_ropensci_docs <- function(path = ".", destination = NULL, install = FALSE,
       bootswatch = NULL
     ),
     home = list(strip_header = NULL),
-    navbar = list(type = NULL),
+    navbar = list(type = NULL, bg = NULL),
     development = list(mode = 'release'),
     url = deploy_url,
     destination = destination
