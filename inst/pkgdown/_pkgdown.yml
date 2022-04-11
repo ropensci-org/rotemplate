@@ -22,7 +22,7 @@ template:
     base_font: "proxima-nova,sans-serif"
 navbar:
   structure:
-#    left:  []
+    left:
     right: [search, intro, reference, articles, tutorials, news, github]
 
 
