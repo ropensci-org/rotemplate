@@ -8,6 +8,10 @@ find_review_number <- function(pkgname) {
   registry <- read_registry()
   pkg_entry <- registry$packages[purrr::map_chr(registry$packages, "name") == pkgname]
 
+  if (length(pkg_entry) == 0) {
+    return(NULL)
+  }
+
   if (!nzchar(pkg_entry[[1]][["onboarding"]])) {
     return(NULL)
   }
