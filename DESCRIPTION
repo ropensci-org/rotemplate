@@ -36,6 +36,7 @@ Imports:
     jsonlite,
     memoise,
     pkgdown (>= 2.0.1),
+    purrr,
     servr,
     xml2,
     yaml
