@@ -32,6 +32,9 @@ Encoding: UTF-8
 RoxygenNote: 7.1.2
 Imports:
     commonmark,
+    curl,
+    jsonlite,
+    memoise,
     pkgdown (>= 2.0.1),
     servr,
     xml2,
