@@ -6,22 +6,19 @@ find_review_number <- function(pkgname) {
   }
 
   registry <- read_registry()
-  pkg_entry <- registry$packages[purrr::map_chr(registry$packages, "name") == pkgname]
+
+  pkg_entry <- registry[purrr::map_chr(registry, "pkgname") == pkgname]
 
   if (length(pkg_entry) == 0) {
     return(NULL)
   }
 
-  if (!nzchar(pkg_entry[[1]][["onboarding"]])) {
-    return(NULL)
-  }
-
-  sub(".*issues/", "", pkg_entry[[1]][["onboarding"]])
+  pkg_entry[[1]][["iss_no"]]
 }
 
 .read_registry <- function() {
   jsonlite::read_json(
-    "https://raw.githubusercontent.com/ropensci/roregistry/gh-pages/registry.json"
+    "https://badges.ropensci.org/json/onboarded.json"
   )
 }
 
