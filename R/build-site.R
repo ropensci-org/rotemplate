@@ -20,6 +20,29 @@ build_ropensci_docs <- function(path = ".", destination = NULL, install = FALSE,
   desc <- as.data.frame(read.dcf(file.path(path, 'DESCRIPTION')))
   pkgname <- desc$Package
   deploy_url <- sprintf("https://docs.ropensci.org/%s", pkgname)
+
+  software_review_number <- find_review_number(pkgname)
+  home <- if (!is.null(software_review_number)) {
+    list(
+      strip_header = NULL,
+      sidebar = list(
+        structure = c("links", "license", "community", "citation", "authors", "softwarereview"),
+        components = list(
+          softwarereview = list(
+            title = "Software Peer-Review",
+            text = sprintf(
+              "[![rOpenSci peer-review](https://badges.ropensci.org/%s_status.svg)](https://github.com/ropensci/software-review/issues/%s)",
+              software_review_number,
+              software_review_number
+            )
+          )
+        )
+      )
+    )
+  } else {
+    list(strip_header = NULL)
+  }
+
   #NB: pkgdown uses utils::modifyList() to merge _pkgdown.yml values with overrides.
   #This will recursively merge lists, and delete values that are 'NULL' in overrides.
   override <- list(
@@ -29,7 +52,7 @@ build_ropensci_docs <- function(path = ".", destination = NULL, install = FALSE,
       path = NULL,
       bootswatch = NULL
     ),
-    home = list(strip_header = NULL),
+    home = home,
     navbar = list(type = NULL, bg = NULL),
     development = list(mode = 'release'),
     url = deploy_url,

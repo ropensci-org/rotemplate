@@ -29,12 +29,14 @@ Suggests:
 VignetteBuilder: 
     knitr
 Encoding: UTF-8
-RoxygenNote: 7.1.2
+RoxygenNote: 7.2.1.9000
 Imports:
-    commonmark,
+    curl,
+    jsonlite,
+    memoise,
     pkgdown (>= 2.0.1),
+    purrr,
     servr,
-    xml2,
     yaml
 Roxygen: list(markdown = TRUE)
 Config/testthat/edition: 3
