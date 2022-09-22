@@ -37,6 +37,8 @@ Imports:
     pkgdown (>= 2.0.1),
     purrr,
     servr,
-    yaml
+    yaml,
+    xml2,
+    commonmark
 Roxygen: list(markdown = TRUE)
 Config/testthat/edition: 3
