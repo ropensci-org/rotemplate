@@ -26,7 +26,7 @@ build_ropensci_docs <- function(path = ".", destination = NULL, install = FALSE,
     list(
       strip_header = NULL,
       sidebar = list(
-        structure = c("links", "license", "community", "citation", "authors", "softwarereview"),
+        structure = c("links", "dev", "license", "community", "citation", "authors", "softwarereview"),
         components = list(
           softwarereview = list(
             title = "Software Peer-Review",
