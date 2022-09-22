@@ -17,9 +17,18 @@ find_review_number <- function(pkgname) {
 }
 
 .read_registry <- function() {
-  jsonlite::read_json(
-    "https://badges.ropensci.org/json/onboarded.json"
+  registry <- try(
+    jsonlite::read_json(
+      "https://badges.ropensci.org/json/onboarded.json"
+    ),
+    silent = TRUE
   )
+
+  if (inherits(registry, "try-error")) {
+    return(NULL)
+  }
+
+  registry
 }
 
 #' @importFrom memoise memoise
