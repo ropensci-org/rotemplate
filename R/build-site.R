@@ -38,15 +38,15 @@ build_ropensci_docs <- function(path = ".", destination = NULL, install = FALSE,
     )
   )
   if (!is.null(software_review_number)) {
-    home[["structure"]] <- c(home[["structure"]], "softwarereview")
-    home[["components"]] <- c(home[["components"]], softwarereview = list(
+    home[["sidebar"]][["structure"]] <- c(home[["sidebar"]][["structure"]], "softwarereview")
+    home[["sidebar"]][["components"]][["softwarereview"]] <- list(
       title = "Software Peer-Review",
       text = sprintf(
         "[![rOpenSci peer-review](https://badges.ropensci.org/%s_status.svg)](https://github.com/ropensci/software-review/issues/%s)",
         software_review_number,
         software_review_number
       )
-    ))
+    )
   }
 
   #NB: pkgdown uses utils::modifyList() to merge _pkgdown.yml values with overrides.
