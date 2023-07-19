@@ -47,8 +47,6 @@ template:
 
 -   [`riem`](https://docs.ropensci.org/riem/)
 
--   [`ropenaq`](https://docs.ropensci.org/ropenaq/)
-
 -   [`rotl`](https://docs.ropensci.org/rotl/)
 
 -   [`stplanr`](https://docs.ropensci.org/stplanr/)
