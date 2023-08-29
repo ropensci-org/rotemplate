@@ -6,14 +6,10 @@ find_review_number <- function(pkgname) {
   }
 
   registry <- read_registry()
-
-  pkg_entry <- registry[purrr::map_chr(registry, "pkgname") == pkgname]
-
-  if (length(pkg_entry) == 0) {
-    return(NULL)
+  pkg_entry <- Filter(function(x){x$pkgname == pkgname }, registry)
+  if(length(pkg_entry)){
+    pkg_entry[[1]][["iss_no"]]
   }
-
-  pkg_entry[[1]][["iss_no"]]
 }
 
 .read_registry <- function() {
