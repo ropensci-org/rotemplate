@@ -54,6 +54,7 @@ build_ropensci_docs <- function(path = ".", destination = NULL, install = FALSE,
   override <- list(
     template = list(
       package = "rotemplate",
+      bootstrap = 5,
       params = list(mathjax = need_mathjax(path), bootswatch = NULL),
       path = NULL,
       bootswatch = NULL
