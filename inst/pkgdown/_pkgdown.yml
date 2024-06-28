@@ -9,7 +9,7 @@ template:
     dropdown-link-hover-bg: "#64a4ef"
     dropdown-link-hover-color: "white"
     dropdown-link-active-color: "white"
-    headings-color: "#5c677e"
+    headings-color-light: "#484f5e"
     navbar-brand-font-size: "2rem"
     navbar-light-color: "white"
     navbar-light-brand-color: "white"
@@ -23,7 +23,7 @@ template:
 navbar:
   structure:
     left:
-    right: [search, intro, reference, articles, tutorials, news, github]
+    right: [search, intro, reference, articles, tutorials, news, github, lightswitch]
 
 
 authors:

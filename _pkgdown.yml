@@ -2,6 +2,7 @@ url: https://docs.ropensci.org/rotemplate
 
 template:
   package: rotemplate
+  light-switch: true
 
 destination: docs
 
