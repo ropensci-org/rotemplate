@@ -110,6 +110,11 @@ build_ropensci_docs <- function(path = ".", destination = NULL, install = FALSE,
 get_math_rendering <- function(path){
 
   pkgdown_yml <- pkgdown_config_path(path = path)
+
+  if (is.null(pkgdown_yml)) {
+    return(NULL)
+  }
+
   pkgdown_config <- yaml::read_yaml(pkgdown_yml)
 
   if (is.null(pkgdown_config)) {
