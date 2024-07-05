@@ -51,11 +51,13 @@ build_ropensci_docs <- function(path = ".", destination = NULL, install = FALSE,
 
   #NB: pkgdown uses utils::modifyList() to merge _pkgdown.yml values with overrides.
   #This will recursively merge lists, and delete values that are 'NULL' in overrides.
+
+
   override <- list(
     template = list(
       package = "rotemplate",
       bootstrap = 5,
-      params = list(mathjax = need_mathjax(path), bootswatch = NULL),
+      params = list(bootswatch = NULL),
       path = NULL,
       bootswatch = NULL
     ),
@@ -65,6 +67,11 @@ build_ropensci_docs <- function(path = ".", destination = NULL, install = FALSE,
     url = deploy_url,
     destination = destination
   )
+
+  math_config <- get_math_rendering(path)
+  if (!is.null(math_config)) {
+    override$template$`math-rendering` <- math_config
+  }
 
   find_and_fix_readme(path, pkgname)
 
@@ -98,18 +105,28 @@ build_ropensci_docs <- function(path = ".", destination = NULL, install = FALSE,
   invisible(pkg$dst_path)
 }
 
-need_mathjax <- function(path){
+# we need this to keep supporting the old syntax we had set up
+# TODO: PR to packages using it so we can remove those lines!
+get_math_rendering <- function(path){
+
   pkgdown_yml <- pkgdown_config_path(path = path)
-  isTRUE(try({
-    if(!is.null(pkgdown_yml)){
-      pkgdown_config <- yaml::read_yaml(pkgdown_yml)
-      if(isTRUE(pkgdown_config$mathjax) || isTRUE(pkgdown_config$template$params$mathjax)){
-        message("Site needs mathjax library")
-        return(TRUE)
-      }
-    }
-    message("Site does not need mathjax")
-  }))
+  pkgdown_config <- yaml::read_yaml(pkgdown_yml)
+
+  if (is.null(pkgdown_config)) {
+    return(NULL)
+  }
+
+  math_rendering <- pkgdown_config$template$`math-rendering`
+  if (!is.null(math_rendering)) {
+    return(math_rendering)
+  }
+
+  if(isTRUE(pkgdown_config$mathjax) || isTRUE(pkgdown_config$template$params$mathjax)){
+    return("mathjax")
+  }
+
+  return(NULL)
+
 }
 
 find_and_fix_readme <- function(path, pkg){
