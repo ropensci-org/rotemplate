@@ -4,6 +4,7 @@ template:
   bootstrap: 5
   bslib:
     bg: "white"
+    body-bg-dark: "#212529"
     fg: "#283140"
     primary: "#1b6ada"
     dropdown-link-hover-bg: "#64a4ef"
