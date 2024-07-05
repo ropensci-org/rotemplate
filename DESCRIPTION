@@ -34,7 +34,7 @@ Imports:
     curl,
     jsonlite,
     memoise,
-    pkgdown (>= 2.0.1),
+    pkgdown (>= 2.0.9.9000),
     purrr,
     servr,
     yaml,
@@ -42,3 +42,5 @@ Imports:
     commonmark
 Roxygen: list(markdown = TRUE)
 Config/testthat/edition: 3
+Remotes:  
+    r-lib/pkgdown

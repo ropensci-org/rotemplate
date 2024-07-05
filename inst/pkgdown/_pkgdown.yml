@@ -1,15 +1,21 @@
 template:
   includes:
+    in_header: |
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css" />
+      <script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js" data-cfasync="false"></script>
+      <script src="https://ropensci.org/scripts/matomo.js"></script>
+      <noscript><p><img src="https://ropensci.matomo.cloud/matomo.php?idsite=1&amp;rec=1" style="border:0;" alt="" /></p></noscript>
     before_title: '<a href="https://ropensci.org"><img src="https://ropensci.org/img/icon_short_white.svg" id="hexlogo" alt="rOpenSci"></a>'
   bootstrap: 5
   bslib:
     bg: "white"
+    body-bg-dark: "#212529"
     fg: "#283140"
     primary: "#1b6ada"
     dropdown-link-hover-bg: "#64a4ef"
     dropdown-link-hover-color: "white"
     dropdown-link-active-color: "white"
-    headings-color: "#5c677e"
+    headings-color-light: "#484f5e"
     navbar-brand-font-size: "2rem"
     navbar-light-color: "white"
     navbar-light-brand-color: "white"
@@ -23,7 +29,7 @@ template:
 navbar:
   structure:
     left:
-    right: [search, intro, reference, articles, tutorials, news, github]
+    right: [search, intro, reference, articles, tutorials, news, github, lightswitch]
 
 
 authors:

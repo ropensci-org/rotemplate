@@ -28,16 +28,10 @@ If your website is not deploying or you run into another problem, please
 open an issue in the [ropensci/docs](https://github.com/ropensci/docs)
 repository.
 
-### Mathjax
+### Math rendering
 
-if you want to use Mathjax you’ll need to specify it in the `pkgdown`
-config file like so:
+Please refer to [pkgdown documentation](https://pkgdown.r-lib.org/dev/articles/customise.html#math-rendering).
 
-``` yaml
-template:
-  params:
-    mathjax: true
-```
 
 ## Example sites
 
