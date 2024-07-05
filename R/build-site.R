@@ -52,7 +52,6 @@ build_ropensci_docs <- function(path = ".", destination = NULL, install = FALSE,
   #NB: pkgdown uses utils::modifyList() to merge _pkgdown.yml values with overrides.
   #This will recursively merge lists, and delete values that are 'NULL' in overrides.
 
-
   override <- list(
     template = list(
       package = "rotemplate",
@@ -67,6 +66,11 @@ build_ropensci_docs <- function(path = ".", destination = NULL, install = FALSE,
     url = deploy_url,
     destination = destination
   )
+
+  navbar_config <- fixup_navbar_config(path)
+  if (!is.null(navbar_config)) {
+    override$navbar <- modifyList(override$navbar, navbar_config)
+  }
 
   math_config <- get_math_rendering(path)
   if (!is.null(math_config)) {
@@ -103,6 +107,44 @@ build_ropensci_docs <- function(path = ".", destination = NULL, install = FALSE,
     servr::httw(pkg$dst_path)
   }
   invisible(pkg$dst_path)
+}
+
+fixup_navbar_config <- function(path) {
+
+  pkgdown_yml <- pkgdown_config_path(path = path)
+  if (is.null(pkgdown_yml)) {
+    return(NULL)
+  }
+
+  pkgdown_config <- yaml::read_yaml(pkgdown_yml)
+  if (is.null(pkgdown_config)) {
+    return(NULL)
+  }
+
+  if (is.null(pkgdown_config$navbar)) {
+    return(NULL)
+  }
+
+  if (!is.null(pkgdown_config$navbar$structure)) {
+    all_components <- c(
+      pkgdown_config$navbar$structure$left,
+      pkgdown_config$navbar$structure$right
+    )
+    if (!("search" %in% all_components)) {
+      pkgdown_config$navbar$structure$right <- c(pkgdown_config$navbar$structure$right, "search")
+      return(pkgdown_config$navbar)
+    }
+  }
+
+  uses_old_syntax <- !is.null(pkgdown_config$navbar$left) ||
+    !is.null(pkgdown_config$navbar$right)
+  if (uses_old_syntax) {
+    warning("Update the pkgdown navbar configuration, see https://pkgdown.r-lib.org/articles/customise.html#navbar-heading")
+  }
+
+
+  return(NULL)
+
 }
 
 # we need this to keep supporting the old syntax we had set up
