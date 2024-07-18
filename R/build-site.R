@@ -139,7 +139,7 @@ fixup_navbar_config <- function(path) {
   uses_old_syntax <- !is.null(pkgdown_config$navbar$left) ||
     !is.null(pkgdown_config$navbar$right)
   if (uses_old_syntax) {
-    warning("Update the pkgdown navbar configuration, see https://pkgdown.r-lib.org/articles/customise.html#navbar-heading")
+    stop("Update the pkgdown navbar configuration, see https://pkgdown.r-lib.org/articles/customise.html#navbar-heading")
   }
 
 
