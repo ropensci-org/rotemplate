@@ -42,5 +42,3 @@ Imports:
     commonmark
 Roxygen: list(markdown = TRUE)
 Config/testthat/edition: 3
-Remotes:  
-    r-lib/pkgdown
