@@ -1,6 +1,6 @@
 # rotemplate <a href='https://docs.ropensci.org/rotemplate'><img src='man/figures/logo.png' align="right" height="134.5" /></a>
 
-rotemplate provides a custom pkgdown template for rOpenSci packages. We
+rotemplate provides **a custom pkgdown template** for rOpenSci packages. We
 use this to render sites at `https://docs.ropensci.org`. Please don’t
 use it for your own package if it’s not an rOpenSci package (i.e. only
 use it for packages listed on <https://ropensci.org/packages/>).
