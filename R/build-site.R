@@ -72,11 +72,6 @@ build_ropensci_docs <- function(path = ".", destination = NULL, install = FALSE,
     override$navbar <- modifyList(override$navbar, navbar_config)
   }
 
-  math_config <- get_math_rendering(path)
-  if (!is.null(math_config)) {
-    override$template$`math-rendering` <- math_config
-  }
-
   find_and_fix_readme(path, pkgname)
 
   # Prevent favicon building
@@ -142,35 +137,6 @@ fixup_navbar_config <- function(path) {
     stop("Update the pkgdown navbar configuration, see https://pkgdown.r-lib.org/articles/customise.html#navbar-heading")
   }
 
-
-  return(NULL)
-
-}
-
-# we need this to keep supporting the old syntax we had set up
-# TODO: PR to packages using it so we can remove those lines!
-get_math_rendering <- function(path){
-
-  pkgdown_yml <- pkgdown_config_path(path = path)
-
-  if (is.null(pkgdown_yml)) {
-    return(NULL)
-  }
-
-  pkgdown_config <- yaml::read_yaml(pkgdown_yml)
-
-  if (is.null(pkgdown_config)) {
-    return(NULL)
-  }
-
-  math_rendering <- pkgdown_config$template$`math-rendering`
-  if (!is.null(math_rendering)) {
-    return(math_rendering)
-  }
-
-  if(isTRUE(pkgdown_config$mathjax) || isTRUE(pkgdown_config$template$params$mathjax)){
-    return("mathjax")
-  }
 
   return(NULL)
 
