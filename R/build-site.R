@@ -69,7 +69,7 @@ build_ropensci_docs <- function(path = ".", destination = NULL, install = FALSE,
 
   navbar_config <- fixup_navbar_config(path)
   if (!is.null(navbar_config)) {
-    override$navbar <- modifyList(override$navbar, navbar_config)
+    override$navbar <- utils::modifyList(override$navbar, navbar_config)
   }
 
   find_and_fix_readme(path, pkgname)

@@ -32,13 +32,9 @@ Encoding: UTF-8
 RoxygenNote: 7.2.1.9000
 Imports:
     curl,
-    jsonlite,
     memoise,
     pkgdown (>= 2.0.9.9000),
-    purrr,
     servr,
-    yaml,
-    xml2,
-    commonmark
+    yaml
 Roxygen: list(markdown = TRUE)
 Config/testthat/edition: 3
