@@ -1,19 +1,13 @@
 Package: rotemplate
 Title: pkgdown template and utilities for rOpenSci docs
 Version: 2.0.1
-Authors@R: 
-    c(person(given = "Maëlle",
-             family = "Salmon",
-             role = c("cre", "aut"),
-             email = "maelle.salmon@yahoo.se",
-             comment = c(ORCID = "0000-0002-2815-0399")),
-      person(given = "Jeroen",
-             family = "Ooms",
-             role = "aut",
-             email = "jeroen@berkeley.edu"),
-      person(given = "rOpenSci",
-             role = "fnd",
-             comment = "https://ropensci.org/"))
+Authors@R: c(
+    person("Maëlle", "Salmon", , "maelle.salmon@yahoo.se", role = c("cre", "aut"),
+           comment = c(ORCID = "0000-0002-2815-0399")),
+    person("Jeroen", "Ooms", , "jeroen@berkeley.edu", role = "aut"),
+    person("rOpenSci", role = "fnd",
+           comment = c("https://ropensci.org/", ROR = "019jywm96"))
+  )
 Description: This is a private template for use by rOpenSci
     packages.  Please don't use it for your own non-rOpenSci package.
 License: MIT + file LICENSE
