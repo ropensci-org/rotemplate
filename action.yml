@@ -12,6 +12,10 @@ inputs:
     description: 'Use the system default R'
     default: 'release'
     required: false
+  destination:
+    description: 'Destination folder'
+    default: 'ropensci_docs_website'
+    required: false
 
 outputs:
   RVERSION:
@@ -44,14 +48,14 @@ runs:
         needs: website
 
     - name: Build site
-      run: rotemplate::build_ropensci_docs("${{ inputs.subdir || '.' }}", destination = "ropensci_docs_website")
+      run: rotemplate::build_ropensci_docs("${{ inputs.subdir || '.' }}", destination = "${{ inputs.destination }}")
       shell: Rscript {0}
 
     - name: "Save website into artifact"
       uses: actions/upload-artifact@v4
       with:
         name: docs-website
-        path: ropensci_docs_website
+        path: ${{ inputs.destination }}
 
     - name: Get R version
       id: rversion
