@@ -26,8 +26,10 @@ Encoding: UTF-8
 RoxygenNote: 7.2.1.9000
 Imports:
     curl,
+    gert,
+    jsonlite,
     memoise,
-    pkgdown (>= 2.0.9.9000),
+    pkgdown,
     servr,
     yaml
 Roxygen: list(markdown = TRUE)

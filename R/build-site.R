@@ -101,6 +101,15 @@ build_ropensci_docs <- function(path = ".", destination = NULL, install = FALSE,
   if (preview) {
     servr::httw(pkg$dst_path)
   }
+
+  # Some metadata about the commit that was built
+  if(file.exists(file.path(path, '.git'))){
+    head <- gert::git_log(max = 1, repo = path)
+    repo_url <- gert::git_remote_info()$url
+    jsonlite::write_json(list(commit = as.list(head), repo = repo_url, pkg = pkgname),
+                         file.path(pkg$dst_path, 'info.json'), pretty = TRUE, auto_unbox = TRUE)
+  }
+  file.create(file.path(pkg$dst_path, '.nojekyll'))
   invisible(pkg$dst_path)
 }
 
