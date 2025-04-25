@@ -10,10 +10,9 @@ and [lockedatapkg](https://github.com/lockedatapublished/lockedatapkg).
 
 ## How to use `rotemplate`
 
-Documentation rOpenSci packages will automatically be generated from
-your master branch and published to <https://docs.ropensci.org>. You
-don’t have to do anything to make this work. If you want to test your
-site locally use this:
+Documentation for rOpenSci packages will automatically be generated from
+your default branch and published to <https://docs.ropensci.org>. You
+don’t need to do anything to make this work. To test your site locally use:
 
 ``` r
 library(rotemplate)
@@ -21,12 +20,36 @@ library(rotemplate)
 rotemplate::build_ropensci_docs("path/to/yourpkg")
 ```
 
-Everything else can be configured as usual via the `_pkgdown.yml` file
+Preferences can be configured as usual via the `_pkgdown.yml` file
 as described in the pkgdown documentation.
 
 If your website is not deploying or you run into another problem, please
-open an issue in the [ropensci/docs](https://github.com/ropensci/docs)
+open an issue in the [rotemplate](https://github.com/ropensci-org/rotemplate)
 repository.
+
+## How it works
+
+R-universe automatically invokes the [action.yml](action.yml) script on each
+update of all packages in ropensci. You don't need to do anything for this.
+However, if you want to test-build the pkgdown site in your own package CI, 
+you could add the following workflow to your package repository:
+
+```yml
+on:
+  push:
+  pull_request:
+
+name: Test-docs
+
+jobs:
+  Test-docs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: ropensci-org/rotemplate@main
+```
+
+This will run exactly the same script to build the ropensci pkgdown site, and
+store it as an GHA artifact where you can download it to view it locally.
 
 ### Math rendering
 

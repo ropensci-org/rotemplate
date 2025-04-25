@@ -1,0 +1,61 @@
+# This action is called in the r-universe workflow.
+name: 'Build docs'
+description: 'Builds custom rOpenSci pkgdown site from  a git remote.'
+inputs:
+  repo_url:
+    description: 'URL of the git repository'
+    required: false
+  subdir:
+    description: 'Subdirectory containing the R package'
+    required: false
+  r-version:
+    description: 'Use the system default R'
+    default: 'release'
+    required: false
+
+outputs:
+  RVERSION:
+    description: 'Store used version of R'
+    value: ${{steps.rversion.outputs.RVERSION}}
+
+runs:
+  using: "composite"
+  steps:
+    - name: Clone repository
+      shell: bash
+      run: |
+        git config --global --add safe.directory *
+        git clone ${{ inputs.repo_url || format('https://github.com/{0}', github.repository) }} $GITHUB_WORKSPACE
+        cd $GITHUB_WORKSPACE
+
+    - uses: r-lib/actions/setup-pandoc@v2
+
+    - uses: r-lib/actions/setup-r@v2
+      if: inputs.r-version != 'skip'
+      with:
+        use-public-rspm: true
+        r-version: ${{ inputs.r-version }}
+        extra-repositories: 'https://ropensci.r-universe.dev'
+
+    - uses: r-lib/actions/setup-r-dependencies@v2
+      with:
+        pak-version: 'devel'
+        extra-packages: any::pkgdown, ropensci-org/rotemplate, local::.
+        needs: website
+
+    - name: Build site
+      run: rotemplate::build_ropensci_docs("${{ inputs.subdir || '.' }}", destination = "ropensci_docs_website")
+      shell: Rscript {0}
+
+    - name: "Save website into artifact"
+      uses: actions/upload-artifact@v4
+      with:
+        name: docs-website
+        path: ropensci_docs_website
+
+    - name: Get R version
+      id: rversion
+      shell: bash
+      run: |
+        RVERSION=$(Rscript -e "cat(as.character(getRversion()))")
+        echo "RVERSION=$RVERSION" >> $GITHUB_OUTPUT
