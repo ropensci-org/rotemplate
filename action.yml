@@ -46,6 +46,7 @@ runs:
         pak-version: 'devel'
         extra-packages: any::pkgdown, ropensci-org/rotemplate, local::.
         needs: website
+        working-directory: ${{ inputs.subdir || '.' }}
 
     - name: Build site
       run: rotemplate::build_ropensci_docs("${{ inputs.subdir || '.' }}", destination = "${{ inputs.destination }}")

@@ -17,6 +17,10 @@
 #' @param ... passed to [pkgdown::build_site]
 build_ropensci_docs <- function(path = ".", destination = NULL, install = FALSE, preview = interactive(), ...) {
   path <- normalizePath(path, mustWork = TRUE)
+  if(length(destination)){
+    dir.create(destination)
+    destination <- normalizePath(destination)
+  }
   desc <- as.data.frame(read.dcf(file.path(path, 'DESCRIPTION')))
   pkgname <- desc$Package
   deploy_url <- sprintf("https://docs.ropensci.org/%s", pkgname)
@@ -102,10 +106,10 @@ build_ropensci_docs <- function(path = ".", destination = NULL, install = FALSE,
     servr::httw(pkg$dst_path)
   }
 
-  # Some metadata about the commit that was built
-  if(file.exists(file.path(path, '.git'))){
+  # Some metadata about the commit if we are in a git repo
+  if(file.exists('.git')){
     head <- gert::git_log(max = 1, repo = path)
-    repo_url <- gert::git_remote_info()$url
+    repo_url <- gert::git_remote_info(repo = path)$url
     jsonlite::write_json(list(commit = as.list(head), repo = repo_url, pkg = pkgname),
                          file.path(pkg$dst_path, 'info.json'), pretty = TRUE, auto_unbox = TRUE)
   }
