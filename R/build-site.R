@@ -96,10 +96,6 @@ build_ropensci_docs <- function(path = ".", destination = NULL, install = FALSE,
     )
   }
 
-  Sys.setenv(NOT_CRAN="true")
-  # Do not abort on check_missing_topics() for now
-  # https://github.com/r-lib/pkgdown/blob/HEAD/R/build-reference-index.R#L146
-  Sys.unsetenv('CI')
   pkg <- pkgdown::as_pkgdown(path, override = override)
   pkgdown::build_site(pkg = pkg, ..., install = install, preview = FALSE, devel = FALSE)
   if (preview) {
