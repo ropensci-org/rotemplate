@@ -46,6 +46,7 @@ runs:
         pak-version: 'devel'
         extra-packages: any::pkgdown, ropensci-org/rotemplate, local::.
         needs: website
+        cache: false
         working-directory: ${{ inputs.subdir || '.' }}
 
     - name: Build site
