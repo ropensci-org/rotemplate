@@ -29,7 +29,7 @@ repository.
 
 ## How it works
 
-The R-universe [build workflow](https://github.com/r-universe/workflows/blob/v1/.github/workflows/build.yml)
+The R-universe [build workflow](https://github.com/r-universe/workflows/blob/HEAD/.github/workflows/build.yml)
 automatically invokes the rotemplate [action.yml](action.yml) script on each
 update of a packages in ropensci. You don't need to do anything for this.
 However, if you want to test-build the pkgdown site in your own package CI, 
