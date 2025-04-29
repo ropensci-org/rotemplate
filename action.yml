@@ -44,7 +44,7 @@ runs:
     - uses: r-lib/actions/setup-r-dependencies@v2
       with:
         pak-version: 'devel'
-        extra-packages: any::pkgdown, ropensci-org/rotemplate, local::.
+        extra-packages: any::pkgdown, ropensci-org/rotemplate, local::., *=?ignore-unavailable
         needs: website
         cache: false
         working-directory: ${{ inputs.subdir || '.' }}
