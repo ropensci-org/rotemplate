@@ -61,6 +61,7 @@ runs:
 
     - name: Get R version
       id: rversion
+      if: always()
       shell: bash
       run: |
         RVERSION=$(Rscript -e "cat(as.character(getRversion()))")
