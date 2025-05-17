@@ -68,6 +68,7 @@ build_ropensci_docs <- function(path = ".", destination = NULL, install = FALSE,
     navbar = list(type = NULL, bg = NULL),
     development = list(mode = 'release'),
     url = deploy_url,
+    repo = list(branch = "HEAD"),
     destination = destination
   )
 
