@@ -32,7 +32,7 @@ runs:
         git clone ${{ inputs.repo_url || format('https://github.com/{0}', github.repository) }} $GITHUB_WORKSPACE
         cd $GITHUB_WORKSPACE
 
-    - uses: r-lib/actions/setup-pandoc@v2
+#    - uses: r-lib/actions/setup-pandoc@v2
 
     - uses: r-lib/actions/setup-r@v2
       if: inputs.r-version != 'skip'
@@ -43,7 +43,6 @@ runs:
 
     - uses: r-lib/actions/setup-r-dependencies@v2
       with:
-        pak-version: 'devel'
         extra-packages: any::pkgdown, ropensci-org/rotemplate, local::., *=?ignore-unavailable
         needs: website
         cache: false
