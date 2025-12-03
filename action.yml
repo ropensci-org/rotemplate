@@ -57,6 +57,7 @@ runs:
       with:
         name: docs-website
         path: ${{ inputs.destination }}
+        include-hidden-files: true
 
     - name: Get R version
       id: rversion
