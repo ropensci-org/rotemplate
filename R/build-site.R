@@ -107,8 +107,9 @@ build_ropensci_docs <- function(path = ".", destination = NULL, install = FALSE,
   if(file.exists('.git')){
     head <- gert::git_log(max = 1, repo = path)
     repo_url <- gert::git_remote_info(repo = path)$url
-    jsonlite::write_json(list(commit = as.list(head), repo = repo_url, pkg = pkgname),
-                         file.path(pkg$dst_path, 'info.json'), pretty = TRUE, auto_unbox = TRUE)
+    jsonlite::write_json(list(commit = as.list(head), repo = repo_url, pkg = pkgname, time = Sys.time()),
+                         file.path(pkg$dst_path, 'info.json'), pretty = TRUE,
+                         POSIXt = 'ISO8601', UTC = TRUE, auto_unbox = TRUE)
   }
   file.create(file.path(pkg$dst_path, '.nojekyll'))
   invisible(pkg$dst_path)
