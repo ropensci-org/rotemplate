@@ -21,6 +21,12 @@ outputs:
   RVERSION:
     description: 'Store used version of R'
     value: ${{steps.rversion.outputs.RVERSION}}
+  artifact-id:
+    description: 'ID of uploaded artifact'
+    value: ${{steps.upload.outputs.artifact-id}}
+  artifact-url:
+    description: 'Download URL for artifact'
+    value: ${{steps.upload.outputs.artifact-url}}
 
 runs:
   using: "composite"
@@ -54,6 +60,7 @@ runs:
 
     - name: "Save website into artifact"
       uses: actions/upload-artifact@v6
+      id: upload
       with:
         name: docs-website
         path: ${{ inputs.destination }}
