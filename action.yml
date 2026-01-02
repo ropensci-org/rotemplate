@@ -53,7 +53,7 @@ runs:
       shell: Rscript {0}
 
     - name: "Save website into artifact"
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v6
       with:
         name: docs-website
         path: ${{ inputs.destination }}
