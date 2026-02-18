@@ -34,3 +34,4 @@ Imports:
     yaml
 Roxygen: list(markdown = TRUE)
 Config/testthat/edition: 3
+Config/ropensci/maintainer: staff
