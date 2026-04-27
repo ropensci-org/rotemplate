@@ -98,13 +98,15 @@ build_ropensci_docs <- function(path = ".", destination = NULL, install = FALSE,
   }
 
   # Disable ANSI color codes to prevent escape sequences in rendered vignette output.
-  # Packages like cli and fs emit color codes when they detect a TTY, which causes
-  # raw escape sequences (e.g. [36m) to appear in Quarto vignette HTML output when
-  # building in container environments. Setting NO_COLOR propagates to child processes.
-  old_no_color <- Sys.getenv("NO_COLOR", unset = NA_character_)
-  Sys.setenv(NO_COLOR = "1")
+  # In container environments R may be attached to a PTY causing the cli package
+  # (and its dependents like fs and pillar) to emit ANSI escape codes that appear
+  # as raw text in rendered Quarto vignettes. R_CLI_NUM_COLORS=1 is the R-specific
+  # mechanism for disabling cli colors; it propagates to child processes (e.g.
+  # Quarto's knitr R subprocess) without affecting non-R tools.
+  old_cli_num_colors <- Sys.getenv("R_CLI_NUM_COLORS", unset = NA_character_)
+  Sys.setenv(R_CLI_NUM_COLORS = "1")
   on.exit({
-    if (is.na(old_no_color)) Sys.unsetenv("NO_COLOR") else Sys.setenv(NO_COLOR = old_no_color)
+    if (is.na(old_cli_num_colors)) Sys.unsetenv("R_CLI_NUM_COLORS") else Sys.setenv(R_CLI_NUM_COLORS = old_cli_num_colors)
   }, add = TRUE)
 
   pkg <- pkgdown::as_pkgdown(path, override = override)
