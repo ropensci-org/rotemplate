@@ -97,6 +97,16 @@ build_ropensci_docs <- function(path = ".", destination = NULL, install = FALSE,
     )
   }
 
+  # Disable ANSI color codes to prevent escape sequences in rendered vignette output.
+  # Packages like cli and fs emit color codes when they detect a TTY, which causes
+  # raw escape sequences (e.g. [36m) to appear in Quarto vignette HTML output when
+  # building in container environments. Setting NO_COLOR propagates to child processes.
+  old_no_color <- Sys.getenv("NO_COLOR", unset = NA_character_)
+  Sys.setenv(NO_COLOR = "1")
+  on.exit({
+    if (is.na(old_no_color)) Sys.unsetenv("NO_COLOR") else Sys.setenv(NO_COLOR = old_no_color)
+  }, add = TRUE)
+
   pkg <- pkgdown::as_pkgdown(path, override = override)
   pkgdown::build_site(pkg = pkg, ..., install = install, preview = FALSE, devel = FALSE)
   if (preview) {
