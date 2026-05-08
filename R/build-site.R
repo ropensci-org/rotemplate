@@ -61,6 +61,11 @@ build_ropensci_docs <- function(path = ".", destination = NULL, install = FALSE,
       package = "rotemplate",
       bootstrap = 5,
       params = list(bootswatch = NULL),
+      opengraph = list(
+        image = list(
+          src = sprintf('https://ropensci.r-universe.dev/%s/card.png', pkgname)
+        )
+      ),
       path = NULL,
       bootswatch = NULL
     ),
