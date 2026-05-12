@@ -90,6 +90,9 @@ build_ropensci_docs <- function(path = ".", destination = NULL, install = FALSE,
     dir.create(favicon_dir, recursive = TRUE)
   }
 
+  # Remove CSS that may conflict with our template
+  unlink(file.path(path, 'pkgdown/extra.css'))
+
   # Inject rOpenSci logo if no logo
   logo <- find_logo(path)
   if (is.null(logo)) {
